@@ -1,0 +1,6 @@
+mmCreateView("testgeospheres", "View3D", "::testgview")
+mmCreateModule("SimpleSphereRenderer", "::rnd")
+mmSetParamValue("rnd::renderMode", "Simple_Geometry_Shader")
+mmCreateModule("TestSpheresDataSource", "::dat")
+mmCreateCall("CallRender3D", "::testgview::rendering", "::rnd::rendering")
+mmCreateCall("MultiParticleDataCall", "::rnd::getData", "::dat::getData")
