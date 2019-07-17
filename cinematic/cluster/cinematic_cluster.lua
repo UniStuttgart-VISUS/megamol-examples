@@ -47,9 +47,9 @@ if role == "head" then
     mmSetParamValue("::scs::server::noEcho",                   "true")
         
     mmCreateView("mpi_lua", "CinematicView", "v")
-    mmSetParamValue("::mpi_lua::v::backCol",                   "grey")  -- Set when using NGSPHERE - Ignored for OSPRAY (settings in mpi view3d are used)
-    mmSetParamValue("::mpi_lua::v::viewcube::show",            "false") -- Set when using NGSPHERE - Ignored for OSPRAY (settings in mpi view3d are used)
-    mmSetParamValue("::mpi_lua::v::showBBox",                  "false") -- Set when using NGSPHERE - Ignored for OSPRAY (settings in mpi view3d are used)
+    mmSetParamValue("::mpi_lua::v::backCol",                   "grey")  -- Set when using SSBOSPHERE - Ignored for OSPRAY (settings in mpi view3d are used)
+    mmSetParamValue("::mpi_lua::v::viewcube::show",            "false") -- Set when using SSBOSPHERE - Ignored for OSPRAY (settings in mpi view3d are used)
+    mmSetParamValue("::mpi_lua::v::showBBox",                  "false") -- Set when using SSBOSPHERE - Ignored for OSPRAY (settings in mpi view3d are used)
     mmSetParamValue("::mpi_lua::v::cinematicWidth",            cc_width_str)
     mmSetParamValue("::mpi_lua::v::cinematicHeight",           cc_height_str)
     mmSetParamValue("::mpi_lua::v::fps",                       cc_fps_str)   

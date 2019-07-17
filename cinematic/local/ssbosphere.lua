@@ -1,4 +1,4 @@
---- NGSPHERE ---
+--- SSBOSPHERE ---
 
 dataFile = "cinematic_data.mmpld"
 

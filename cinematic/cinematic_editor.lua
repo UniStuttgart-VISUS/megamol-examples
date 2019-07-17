@@ -1,6 +1,6 @@
 ﻿
-fileToRender = "../project_files/testspheres.lua"
-keyframeFile = "../project_files/cinematic_keyframes.kf"
+fileToRender = "../examples/testspheres.lua"
+keyframeFile = "../examples/cinematic/cinematic_keyframes.kf"
 
 
 function trafo(str)
