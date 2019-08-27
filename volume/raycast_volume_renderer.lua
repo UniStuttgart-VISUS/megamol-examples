@@ -1,7 +1,7 @@
 --[[ 
 
 Use this command line arguments to start MegaMol
-  -p "path/to/projects/raycast_volume_renderer.lua" -i RaycastVolumeExample inst
+  -p "path/to/projects/raycast_volume_renderer.lua"
 
  --]]
 
@@ -28,7 +28,6 @@ mmSetParamValue("::RaycastVolumeExample::ScreenShooter1::imgHeight", "1080")
 mmSetParamValue("::RaycastVolumeExample::ScreenShooter1::tileWidth", "1920")
 mmSetParamValue("::RaycastVolumeExample::ScreenShooter1::tileHeight", "1080")
 mmSetParamValue("::RaycastVolumeExample::ScreenShooter1::filename", "RaycastVolumeRenderer.png")
-mmSetParamValue("::RaycastVolumeExample::ScreenShooter1::background", "2")
 
 mmCreateCall("CallGetTransferFunction", "::RaycastVolumeExample::RaycastVolumeRenderer1::getTranfserFunction", "::RaycastVolumeExample::TransferFunction1::gettransferfunction")
 mmCreateCall("VolumetricDataCall", "::RaycastVolumeExample::RaycastVolumeRenderer1::getData", "::RaycastVolumeExample::VolumetricDataSource1::GetData")
