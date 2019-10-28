@@ -29,14 +29,12 @@ function trafo(str)
     print("viewclass = " .. viewclass)
     print("viewmoduleinst = " .. viewmoduleinst)
 
-    newcontent = newcontent:gsub('mmCreateCall%([\"\']CallRender3D[\'\"],%s*[\'\"]' 
-        .. '.-' .. viewmoduleinst .. '::rendering[\'\"],([^,]+)%)', 'mmCreateCall("CallRender3D", "::mpi_lua::v::rendering",%1)')
+    newcontent = newcontent:gsub('mmCreateCall%([\"\']CallRender3D_2[\'\"],%s*[\'\"]' 
+        .. '.-' .. viewmoduleinst .. '::rendering[\'\"],([^,]+)%)', 'mmCreateCall("CallRender3D_2", "::mpi_lua::v::chainRendering",%1)')
 
     return newcontent
 end
 
-
-print("I am a " .. string.upper(role) .. " running as rank " .. rank)
 
 if role == "head" then
 
@@ -47,14 +45,12 @@ if role == "head" then
     mmSetParamValue("::scs::server::noEcho",                   "true")
         
     mmCreateView("mpi_lua", "CinematicView", "v")
-    mmSetParamValue("::mpi_lua::v::backCol",                   "grey")  -- Set when using SSBOSPHERE - Ignored for OSPRAY (settings in mpi view3d are used)
-    mmSetParamValue("::mpi_lua::v::viewcube::show",            "false") -- Set when using SSBOSPHERE - Ignored for OSPRAY (settings in mpi view3d are used)
-    mmSetParamValue("::mpi_lua::v::showBBox",                  "false") -- Set when using SSBOSPHERE - Ignored for OSPRAY (settings in mpi view3d are used)
-    mmSetParamValue("::mpi_lua::v::cinematicWidth",            cc_width_str)
-    mmSetParamValue("::mpi_lua::v::cinematicHeight",           cc_height_str)
-    mmSetParamValue("::mpi_lua::v::fps",                       cc_fps_str)   
-    mmSetParamValue("::mpi_lua::v::firstRenderFrame",          "0")        
-    mmSetParamValue("::mpi_lua::v::delayFirstRenderFrame",     "10.000000")    
+    mmSetParamValue("::mpi_lua::v::backCol",                              "grey") 
+    mmSetParamValue("::mpi_lua::v::cinematic::cinematicWidth",            cc_width_str)
+    mmSetParamValue("::mpi_lua::v::cinematic::cinematicHeight",           cc_height_str)
+    mmSetParamValue("::mpi_lua::v::cinematic::fps",                       cc_fps_str)   
+    mmSetParamValue("::mpi_lua::v::cinematic::firstRenderFrame",          "0")        
+    mmSetParamValue("::mpi_lua::v::cinematic::delayFirstRenderFrame",     "10.000000")    
 
     mmCreateModule("FBOCompositor2", "::mpi_lua::fboc")
     mmSetParamValue("::mpi_lua::fboc::NumRenderNodes",         "1")
@@ -65,16 +61,16 @@ if role == "head" then
     mmSetParamValue("::mpi_lua::kfk::storage::filename",       cc_keyframeFile)
 
     mmCreateCall("CallKeyframeKeeper",  "::mpi_lua::v::keyframeKeeper", "::mpi_lua::kfk::scene3D")
-    mmCreateCall("CallRender3D",        "::mpi_lua::v::rendering",      "::mpi_lua::fboc::rendering")
+    mmCreateCall("CallRender3D_2",        "::mpi_lua::v::rendering",      "::mpi_lua::fboc::rendering")
 
 else
+
+    print("I am a " .. string.upper(role) .. " running as rank " .. rank)
 
     mmCreateModule("View3D", "::mpi_lua::v") 
     --mmCreateView("mpi_lua", "View3D", "v") 
 
     mmSetParamValue("::mpi_lua::v::backCol",                  cc_background)
-    mmSetParamValue("::mpi_lua::v::showBBox",                 "false")    
-    mmSetParamValue("::mpi_lua::v::bboxCol",                  "grey")    
     mmSetParamValue("::mpi_lua::v::viewcube::show",           "false")
     
     mmCreateModule("FBOTransmitter2", "::mpi_lua::fbot")

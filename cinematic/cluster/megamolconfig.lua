@@ -2,7 +2,8 @@
 
 print("I am the MegaMol VISUS Cinematic cluster configuration!")
 
-basePath   = "\\\\vestastore\\Entwicklung\\braunms\\cinematic\\"
+local cinematic = require("cinematic_params")
+
 headNode   = "minyou"
 computer   = string.lower(mmGetMachineName())
 rank       = mmGetEnvValue("PMI_RANK")
@@ -13,14 +14,13 @@ mmSetConfigValue("renderHead", "10.35.1.1")
 
 mmSetLogLevel(     0)
 mmSetEchoLevel(    "*")
-mmSetAppDir(       basePath .. "bin")
-mmAddShaderDir(    basePath .. "share\\shaders")
-mmAddResourceDir(  basePath .. "share\\resources")
-mmPluginLoaderInfo(basePath .. "bin", "*.mmplg", "include")
+mmSetAppDir(       cinematic.basePath .. "bin")
+mmAddShaderDir(    cinematic.basePath .. "share\\shaders")
+mmAddResourceDir(  cinematic.basePath .. "share\\resources")
+mmPluginLoaderInfo(cinematic.basePath .. "bin", "*.mmplg", "include")
 
 
 --- Load cinematic parameters ---
-local cinematic = require("cinematic_params")
 mmSetConfigValue("cinematic_width",         tostring(cinematic.width))
 mmSetConfigValue("cinematic_height",        tostring(cinematic.height))
 mmSetConfigValue("cinematic_fps",           tostring(cinematic.fps))
