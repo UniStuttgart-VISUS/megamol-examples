@@ -1,5 +1,6 @@
 ﻿-- Cinematic MegaMol Project File --
-print("I am the MegaMol VISUS Cinematic cluster project!")
+
+print(">>> I am the MegaMol VISUS Cinematic cluster project!")
 
 -- Parameters --
 headNode         = mmGetConfigValue("headNode")
@@ -30,7 +31,7 @@ function trafo(str)
     print("viewmoduleinst = " .. viewmoduleinst)
 
     newcontent = newcontent:gsub('mmCreateCall%([\"\']CallRender3D_2[\'\"],%s*[\'\"]' 
-        .. '.-' .. viewmoduleinst .. '::rendering[\'\"],([^,]+)%)', 'mmCreateCall("CallRender3D_2", "::mpi_lua::v::chainRendering",%1)')
+        .. '.-' .. viewmoduleinst .. '::rendering[\'\"],([^,]+)%)', 'mmCreateCall("CallRender3D_2", "::mpi_lua::v::rendering",%1)')
 
     return newcontent
 end
@@ -61,11 +62,11 @@ if role == "head" then
     mmSetParamValue("::mpi_lua::kfk::storage::filename",       cc_keyframeFile)
 
     mmCreateCall("CallKeyframeKeeper",  "::mpi_lua::v::keyframeKeeper", "::mpi_lua::kfk::scene3D")
-    mmCreateCall("CallRender3D_2",        "::mpi_lua::v::rendering",      "::mpi_lua::fboc::rendering")
+    mmCreateCall("CallRender3D_2",      "::mpi_lua::v::rendering",      "::mpi_lua::fboc::rendering")
 
 else
 
-    print("I am a " .. string.upper(role) .. " running as rank " .. rank)
+    print(">>> I am a " .. string.upper(role) .. " running as rank " .. rank)
 
     mmCreateModule("View3D", "::mpi_lua::v") 
     --mmCreateView("mpi_lua", "View3D", "v") 

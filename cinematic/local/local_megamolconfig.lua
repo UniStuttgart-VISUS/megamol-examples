@@ -1,6 +1,6 @@
 -- Cinematic MegaMol Configuration File --
 
-print("I am the MegaMol VISUS Cinematic cluster configuration!")
+print(">>> I am the MegaMol VISUS Cinematic cluster configuration!")
 
 local cinematic = require("cinematic_params")
 
