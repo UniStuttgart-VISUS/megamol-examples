@@ -19,7 +19,6 @@ cc_background    = mmGetConfigValue("cinematic_background")
 
 aggregate        = "true" -- use IceT to composite inside MPI WORLD before rank 0 (and only that!) transmits.
 
-
 -- Function for loading lua project file --
 function trafo(str)
     local newcontent = str:gsub('mmCreateView%(.-%)', "")
@@ -56,6 +55,8 @@ if role == "head" then
     mmCreateModule("FBOCompositor2", "::mpi_lua::fboc")
     mmSetParamValue("::mpi_lua::fboc::NumRenderNodes",         "1")
     mmSetParamValue("::mpi_lua::fboc::communicator",           "ZMQ")
+    mmSetParamValue("::mpi_lua::fboc::handshakePort",          "42000")
+    mmSetParamValue("::mpi_lua::fboc::targetBandwidth",        "100")
     mmSetParamValue("::mpi_lua::fboc::only_requested_frames",  "true")
 
     mmCreateModule("KeyframeKeeper", "::mpi_lua::kfk")
@@ -68,8 +69,8 @@ else
 
     print(">>> I am a " .. string.upper(role) .. " running as rank " .. rank)
 
-    mmCreateModule("View3D", "::mpi_lua::v") 
-    --mmCreateView("mpi_lua", "View3D", "v") 
+    mmCreateModule("View3D_2", "::mpi_lua::v") 
+    --mmCreateView("mpi_lua", "View3D_2", "v") 
 
     mmSetParamValue("::mpi_lua::v::backCol",                  cc_background)
     mmSetParamValue("::mpi_lua::v::viewcube::show",           "false")
@@ -78,7 +79,9 @@ else
     mmSetParamValue("::mpi_lua::fbot::tiledDisplay",          "true") 
     mmSetParamValue("::mpi_lua::fbot::view",                  "::mpi_lua::v")
     mmSetParamValue("::mpi_lua::fbot::aggregate",             aggregate)
-    mmSetParamValue("::mpi_lua::fbot::port",                  tostring(34230 + rank)) -- 34242 or 34230
+    mmSetParamValue("::mpi_lua::fbot::communicator",          "ZMQ")
+    mmSetParamValue("::mpi_lua::fbot::handshakePort",         "42000")
+    mmSetParamValue("::mpi_lua::fbot::port",                  tostring(34242 + rank)) 
     mmSetParamValue("::mpi_lua::fbot::targetMachine",         headNode)  
     if (headNode == "localhost" or headNode == "127.0.0.1") then
         mmSetParamValue("::mpi_lua::fbot::force_localhost",  "true")

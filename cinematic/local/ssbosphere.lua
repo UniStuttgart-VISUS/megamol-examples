@@ -2,10 +2,9 @@
 
 dataFile = "cinematic_data.mmpld"
 
-
 mmCreateView("ngsphere", "View3D_2", "::v3d")
 
-mmCreateModule("SphererRenderer", "::ngsr")
+mmCreateModule("SphereRenderer", "::ngsr")
 mmSetParamValue("::ngsr::renderMode", "SSBO_Stream")
 
 mmCreateModule("MMPLDDataSource", "::mmpld")
