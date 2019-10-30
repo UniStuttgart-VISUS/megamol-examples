@@ -1,6 +1,10 @@
-Required data file: "cinematic_data.mmpld" (~365 MB)
+-----
 
-Copy RELEASE build to \\vestastore\Entwicklung\<USERNAME>\cinematiccamera
+Required CMAKE options:
+    BUILD_REMOTE_PLUGIN  true
+    ENABLE_MPI           true
+
+Copy RELEASE build to \\vestastore\Entwicklung\<USERNAME>\cinematic
     
     \bin
     \inlcude
@@ -8,8 +12,8 @@ Copy RELEASE build to \\vestastore\Entwicklung\<USERNAME>\cinematiccamera
     \project_files
     \share
     
-Copy CONFIG FILES to "bin" folder:      
-    \\vestastore\Entwicklung\<USERNAME>\cinematiccamera\bin
+Copy FILES to "bin" folder:      
+    \\vestastore\Entwicklung\<USERNAME>\cinematic\bin
         ... ngsphere.lua
         ... ospray.lua
         ... cinematic_cluster.lua
@@ -19,8 +23,9 @@ Copy CONFIG FILES to "bin" folder:
         ... cinematic_test.mmprj
         ... megamolconfig.lua
 
-EDIT PARAMETERS:        
-        cinematic_params.lua
+    + Required data file: cinematic_data.mmpld (~365 MB)        
+
+Edit PARAMETERS in cinematic_params.lua
           
 MPI JOB:
     (see job.xml)
@@ -39,4 +44,5 @@ MINYOU:
         - Press F10 to connect FBOCompositor and -transmitter.
         - Wait ~20 seconds until first image is rendered.
         - Press 'r' to start rendering ....
-                       
+
+-----

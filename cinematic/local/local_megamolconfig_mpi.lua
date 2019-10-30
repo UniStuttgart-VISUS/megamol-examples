@@ -1,8 +1,9 @@
 -- Cinematic MegaMol Configuration File --
 
-print("I am the MegaMol VISUS Cinematic cluster configuration!")
+print(">>> I am the MegaMol VISUS Cinematic cluster configuration!")
 
-basePath   = "D:\\03_megamol\\cinematic\\"
+local cinematic = require("cinematic_params")
+
 rank       = mmGetEnvValue("PMI_RANK")
 node_count = 2
 headNode   = "127.0.0.1"
@@ -12,18 +13,18 @@ mmSetConfigValue("renderHead", "127.0.0.1")
 
 mmSetLogLevel(     0)
 mmSetEchoLevel(    "*")
-mmSetAppDir(       basePath .. "bin")
-mmAddShaderDir(    basePath .. "share\\shaders")
-mmAddResourceDir(  basePath .. "share\\resources")
-mmPluginLoaderInfo(basePath .. "bin", "*.mmplg", "include")
+mmSetAppDir(       cinematic.basePath .. "bin")
+mmAddShaderDir(    cinematic.basePath .. "share\\shaders")
+mmAddResourceDir(  cinematic.basePath .. "share\\resources")
+mmPluginLoaderInfo(cinematic.basePath .. "bin", "*.mmplg", "include")
 
 mmSetConfigValue("consolegui", "on")
 mmSetConfigValue("topmost",    "off")
 mmSetConfigValue("vsync",      "off")
-
+mmSetConfigValue("useKHRdebug", "off")
+mmSetConfigValue("arcball",     "on")
 
 --- Load cinematic parameters ---
-local cinematic = require("cinematic_params")
 mmSetConfigValue("cinematic_width",         tostring(cinematic.width))
 mmSetConfigValue("cinematic_height",        tostring(cinematic.height))
 mmSetConfigValue("cinematic_fps",           tostring(cinematic.fps))
