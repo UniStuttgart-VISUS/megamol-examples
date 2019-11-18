@@ -2,11 +2,14 @@
 
 print(">>> I am the MegaMol VISUS Cinematic cluster configuration!")
 
-local cinematic = require("cinematic_params")
+local local_cinematic = mmReadTextFile("cinematic_params.lua", nil)
+print("read: " .. local_cinematic)
+code = load(local_cinematic)
+local cinematic = code()
 
-rank       = mmGetEnvValue("PMI_RANK")
-node_count = 2
+node_count = 2 -- Hard coded for test purposes 
 headNode   = "127.0.0.1"
+rank       = mmGetEnvValue("PMI_RANK")
 
 mmSetConfigValue("headNode",   headNode)
 mmSetConfigValue("renderHead", "127.0.0.1")
@@ -24,7 +27,6 @@ mmSetConfigValue("vsync",      "off")
 mmSetConfigValue("useKHRdebug", "off")
 mmSetConfigValue("arcball",     "on")
 
---- Load cinematic parameters ---
 mmSetConfigValue("cinematic_width",         tostring(cinematic.width))
 mmSetConfigValue("cinematic_height",        tostring(cinematic.height))
 mmSetConfigValue("cinematic_fps",           tostring(cinematic.fps))
@@ -32,11 +34,8 @@ mmSetConfigValue("cinematic_background",    tostring(cinematic.background))
 mmSetConfigValue("cinematic_luaFileToLoad", tostring(cinematic.luaFileToLoad))
 mmSetConfigValue("cinematic_keyframeFile",  tostring(cinematic.keyframeFile))
 
-
---- MPI node config values ---
 node_index = rank
 
--- Setting virtual viewport for tiles
 cc_W_int      = tonumber(tostring(cinematic.width))
 cc_H_int      = tonumber(tostring(cinematic.height))           
 cc_W_str      = tostring(cinematic.width)
@@ -49,4 +48,3 @@ mmSetConfigValue("t1-window", "x50y50w" .. cc_tile_W_str .. "h" .. cc_tile_H_str
 mmSetConfigValue("tvview",    cc_W_str .. ";" .. cc_H_str)   
 mmSetConfigValue("t1-tvtile", cc_tile_X_str .. ";0;" .. cc_tile_W_str .. ";" .. cc_tile_H_str)   
 mmSetConfigValue("tvproj",    "mono")
-

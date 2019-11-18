@@ -2,7 +2,10 @@
 
 print(">>> I am the MegaMol VISUS Cinematic cluster configuration!")
 
-local cinematic = require("cinematic_params")
+local local_cinematic = mmReadTextFile("cinematic_params.lua", nil)
+print("read: " .. local_cinematic)
+code = load(local_cinematic)
+local cinematic = code()
 
 headNode   = "minyou"
 computer   = string.lower(mmGetMachineName())
