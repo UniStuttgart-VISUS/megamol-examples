@@ -4,25 +4,25 @@
 
 Use this command line arguments to start MegaMol
 in Cmd:
-  -p "C:\temp\megamol\examples\gltfViewer.lua" -i Project_1 inst
+  -p "F:\Uni\HiWi\Testing\bin\gltfViewer.lua" -i Project_1 inst
 in PowerShell:
-  -p "C:\temp\megamol\examples\gltfViewer.lua" -i Project_1 inst
+  -p "F:\Uni\HiWi\Testing\bin\gltfViewer.lua" -i Project_1 inst
 
  --]]
 
-mmCreateView("Project_1", "GUIView", "GUIView1")
-mmCreateModule("RenderMDIMesh", "::Project_1::RenderMDIMesh1")
-mmCreateModule("View3D_2", "::Project_1::View3D_21")
-mmCreateModule("GlTFRenderTasksDataSource", "::Project_1::GlTFRenderTasksDataSource1")
-mmCreateModule("SimpleGPUMtlDataSource", "::Project_1::SimpleGPUMtlDataSource1")
-mmSetParamValue("::Project_1::SimpleGPUMtlDataSource1::BTF filename", "gltfExample")
-mmCreateModule("GlTFMeshesDataSource", "::Project_1::GlTFMeshesDataSource1")
-mmCreateModule("GlTFFileLoader", "::Project_1::GlTFFileLoader1")
-mmSetParamValue("::Project_1::GlTFFileLoader1::glTF filename", "../examples/mesh/WaterBottle/glTF/WaterBottle.gltf")
-mmCreateCall("CallRender3D_2", "::Project_1::View3D_21::rendering", "::Project_1::RenderMDIMesh1::rendering")
+mmCreateView("Project_1", "GUIView", "GUIView1") --confPos={X=10,Y=10}
+mmCreateModule("View3D_2", "::Project_1::View3D_21") --confPos={X=15,Y=123}
+mmCreateModule("GlTFRenderTasksDataSource", "::Project_1::GlTFRenderTasksDataSource1") --confPos={X=336,Y=282}
+mmCreateModule("GlTFFileLoader", "::Project_1::GlTFFileLoader1") --confPos={X=788,Y=432}
+mmSetParamValue("::Project_1::GlTFFileLoader1::glTF filename", [=[../examples/mesh/WaterBottle/glTF/WaterBottle.gltf]=])
+mmCreateModule("SimpleGPUMtlDataSource", "::Project_1::SimpleGPUMtlDataSource1") --confPos={X=718,Y=106}
+mmSetParamValue("::Project_1::SimpleGPUMtlDataSource1::BTF filename", [=[gltfExample]=])
+mmCreateModule("RenderMDIMesh", "::Project_1::RenderMDIMesh1") --confPos={X=23,Y=271}
+mmCreateModule("GPUMeshes", "::Project_1::GPUMeshes1") --confPos={X=666,Y=264}
 mmCreateCall("CallRenderView", "::Project_1::GUIView1::renderview", "::Project_1::View3D_21::render")
+mmCreateCall("CallRender3D_2", "::Project_1::View3D_21::rendering", "::Project_1::RenderMDIMesh1::rendering")
 mmCreateCall("CallGPURenderTaskData", "::Project_1::RenderMDIMesh1::getRenderTaskData", "::Project_1::GlTFRenderTasksDataSource1::getData")
 mmCreateCall("CallGPUMaterialData", "::Project_1::GlTFRenderTasksDataSource1::getMaterialData", "::Project_1::SimpleGPUMtlDataSource1::getData")
-mmCreateCall("CallGPUMeshData", "::Project_1::GlTFRenderTasksDataSource1::getMeshData", "::Project_1::GlTFMeshesDataSource1::getData")
-mmCreateCall("CallGlTFData", "::Project_1::GlTFMeshesDataSource1::getGlTFFile", "::Project_1::GlTFFileLoader1::getData")
-mmCreateCall("CallGlTFData", "::Project_1::GlTFRenderTasksDataSource1::getGlTFFile", "::Project_1::GlTFFileLoader1::getData")
+mmCreateCall("CallGlTFData", "::Project_1::GlTFRenderTasksDataSource1::CallGlTFData", "::Project_1::GlTFFileLoader1::CallGlTFData")
+mmCreateCall("CallMesh", "::Project_1::GPUMeshes1::CallMeshes", "::Project_1::GlTFFileLoader1::CallMeshData")
+mmCreateCall("CallGPUMeshData", "::Project_1::GlTFRenderTasksDataSource1::getMeshData", "::Project_1::GPUMeshes1::getData")
