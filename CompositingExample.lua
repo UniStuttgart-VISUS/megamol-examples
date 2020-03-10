@@ -4,196 +4,60 @@
 
 Use this command line arguments to start MegaMol
 in Cmd:
-  -p "E:\github\megamol\examples\CompositingExample.lua" -i CompositingExample inst
+  -p "E:\github\megamol\examples\CompositingExample.lua" -i Project_1 inst
 in PowerShell:
-  -p "E:\github\megamol\examples\CompositingExample.lua" -i CompositingExample inst
+  -p "E:\github\megamol\examples\CompositingExample.lua" -i Project_1 inst
 
  --]]
 
-mmCreateView("CompositingExample", "GUIView", "GUIView1")
-mmCreateModule("DrawToScreen", "::CompositingExample::DrawToScreen1")
-mmCreateModule("View3D_2", "::CompositingExample::View3D_21")
-mmSetParamValue("::CompositingExample::View3D_21::viewKey::MoveStep", "1")
-mmSetParamValue("::CompositingExample::View3D_21::cam::position", "0;0;5")
-mmSetParamValue("::CompositingExample::View3D_21::cam::orientation", "0;0;0;1")
-mmSetParamValue("::CompositingExample::View3D_21::cam::nearplane", "2.923084")
-mmSetParamValue("::CompositingExample::View3D_21::cam::farplane", "2923.083984")
-mmSetParamValue("::CompositingExample::View3D_21::cam::convergenceplane", "0")
-mmSetParamValue("::CompositingExample::View3D_21::cam::halfapertureradians", "0.261799")
-mmSetParamValue("::CompositingExample::View3D_21::cam::halfdisparity", "0.025")
-mmSetParamValue("::CompositingExample::GUIView1::state", "{
-  \"Font Settings\": {
-    \"font_name\": \"\",
-    \"fpsms_max_history_count\": 20,
-    \"fpsms_mode\": 0,
-    \"fpsms_refresh_rate\": 2.0,
-    \"fpsms_show_options\": false,
-    \"main_project_file\": \"\",
-    \"param_module_filter\": 0,
-    \"param_modules_list\": [],
-    \"param_show_hotkeys\": false,
-    \"win_callback\": 4,
-    \"win_flags\": 64,
-    \"win_hotkey\": [
-      299,
-      2
-    ],
-    \"win_position\": [
-      12.0,
-      12.0
-    ],
-    \"win_reset_size\": [
-      500.0,
-      300.0
-    ],
-    \"win_show\": false,
-    \"win_size\": [
-      250.0,
-      600.0
-    ],
-    \"win_soft_reset\": true
-  },
-  \"Main Window\": {
-    \"font_name\": \"\",
-    \"fpsms_max_history_count\": 20,
-    \"fpsms_mode\": 0,
-    \"fpsms_refresh_rate\": 2.0,
-    \"fpsms_show_options\": false,
-    \"main_project_file\": \"\",
-    \"param_module_filter\": 0,
-    \"param_modules_list\": [],
-    \"param_show_hotkeys\": false,
-    \"win_callback\": 1,
-    \"win_flags\": 3073,
-    \"win_hotkey\": [
-      301,
-      2
-    ],
-    \"win_position\": [
-      24.0,
-      12.0
-    ],
-    \"win_reset_size\": [
-      500.0,
-      300.0
-    ],
-    \"win_show\": true,
-    \"win_size\": [
-      250.0,
-      600.0
-    ],
-    \"win_soft_reset\": false
-  },
-  \"Performance Metrics\": {
-    \"font_name\": \"\",
-    \"fpsms_max_history_count\": 20,
-    \"fpsms_mode\": 0,
-    \"fpsms_refresh_rate\": 2.0,
-    \"fpsms_show_options\": false,
-    \"main_project_file\": \"\",
-    \"param_module_filter\": 0,
-    \"param_modules_list\": [],
-    \"param_show_hotkeys\": false,
-    \"win_callback\": 3,
-    \"win_flags\": 65,
-    \"win_hotkey\": [
-      300,
-      2
-    ],
-    \"win_position\": [
-      12.0,
-      12.0
-    ],
-    \"win_reset_size\": [
-      500.0,
-      300.0
-    ],
-    \"win_show\": false,
-    \"win_size\": [
-      250.0,
-      600.0
-    ],
-    \"win_soft_reset\": true
-  },
-  \"Transfer Function Editor\": {
-    \"font_name\": \"\",
-    \"fpsms_max_history_count\": 20,
-    \"fpsms_mode\": 0,
-    \"fpsms_refresh_rate\": 2.0,
-    \"fpsms_show_options\": false,
-    \"main_project_file\": \"\",
-    \"param_module_filter\": 0,
-    \"param_modules_list\": [],
-    \"param_show_hotkeys\": false,
-    \"win_callback\": 5,
-    \"win_flags\": 64,
-    \"win_hotkey\": [
-      298,
-      2
-    ],
-    \"win_position\": [
-      12.0,
-      12.0
-    ],
-    \"win_reset_size\": [
-      500.0,
-      300.0
-    ],
-    \"win_show\": false,
-    \"win_size\": [
-      250.0,
-      600.0
-    ],
-    \"win_soft_reset\": true
-  }
-}")
-mmCreateModule("GlTFRenderTasksDataSource", "::CompositingExample::GlTFRenderTasksDataSource1")
-mmCreateModule("SimpleGPUMtlDataSource", "::CompositingExample::SimpleGPUMtlDataSource1")
-mmSetParamValue("::CompositingExample::SimpleGPUMtlDataSource1::BTF filename", "dfr_gltfExample")
-mmCreateModule("GlTFMeshesDataSource", "::CompositingExample::GlTFMeshesDataSource1")
-mmCreateModule("GlTFFileLoader", "::CompositingExample::GlTFFileLoader1")
-mmSetParamValue("::CompositingExample::GlTFFileLoader1::glTF filename", "..\\examples\\mesh\\WaterBottle\\glTF\\WaterBottle.gltf")
-mmCreateModule("PointLight", "::CompositingExample::PointLight1")
-mmSetParamValue("::CompositingExample::PointLight1::Intensity", "2000000.000000")
-mmSetParamValue("::CompositingExample::PointLight1::Position", "0.000000;0.000000;-2500.000000")
-mmCreateModule("PointLight", "::CompositingExample::PointLight2")
-mmSetParamValue("::CompositingExample::PointLight2::Intensity", "15000")
-mmSetParamValue("::CompositingExample::PointLight2::Position", "-200.000000;250.000000;-200.000000")
-mmCreateModule("ScreenSpaceEffect", "::CompositingExample::SSAO")
-mmSetParamValue("::CompositingExample::SSAO::SSAO Radius", "0.05")
-mmCreateModule("TextureCombine", "::CompositingExample::TextureCombine1")
-mmSetParamValue("::CompositingExample::TextureCombine1::Mode", "1")
-mmCreateModule("PointLight", "::CompositingExample::PointLight3")
-mmSetParamValue("::CompositingExample::PointLight3::Intensity", "10000000.000000")
-mmSetParamValue("::CompositingExample::PointLight3::Position", "0.000000;2500.000000;0.000000")
-mmCreateModule("SimpleRenderTarget", "::CompositingExample::SimpleRenderTarget1")
-mmCreateModule("LocalLighting", "::CompositingExample::Lambert")
-mmCreateModule("RenderMDIMesh", "::CompositingExample::RenderMDIMesh1")
-mmCreateModule("ScreenSpaceEffect", "::CompositingExample::FXAA")
-mmSetParamValue("::CompositingExample::FXAA::Mode", "1")
-mmCreateModule("BoundingBoxRenderer", "::CompositingExample::BoundingBoxRenderer1")
-mmCreateCall("CallRenderView", "::CompositingExample::GUIView1::renderview", "::CompositingExample::View3D_21::render")
-mmCreateCall("CallGPUMaterialData", "::CompositingExample::GlTFRenderTasksDataSource1::getMaterialData", "::CompositingExample::SimpleGPUMtlDataSource1::getData")
-mmCreateCall("CallGPUMeshData", "::CompositingExample::GlTFRenderTasksDataSource1::getMeshData", "::CompositingExample::GlTFMeshesDataSource1::getData")
-mmCreateCall("CallGlTFData", "::CompositingExample::GlTFMeshesDataSource1::CallGlTFData", "::CompositingExample::GlTFFileLoader1::CallGlTFData")
-mmCreateCall("CallGlTFData", "::CompositingExample::GlTFRenderTasksDataSource1::CallGlTFData", "::CompositingExample::GlTFFileLoader1::CallGlTFData")
-mmCreateCall("CallLight", "::CompositingExample::PointLight1::getLightSlot", "::CompositingExample::PointLight2::deployLightSlot")
-mmCreateCall("CallLight", "::CompositingExample::PointLight2::getLightSlot", "::CompositingExample::PointLight3::deployLightSlot")
-mmCreateCall("CallCamera", "::CompositingExample::SSAO::Camera", "::CompositingExample::SimpleRenderTarget1::Camera")
-mmCreateCall("CallTexture2D", "::CompositingExample::SSAO::DepthTexture", "::CompositingExample::SimpleRenderTarget1::Depth")
-mmCreateCall("CallTexture2D", "::CompositingExample::SSAO::NormalTexture", "::CompositingExample::SimpleRenderTarget1::Normals")
-mmCreateCall("CallTexture2D", "::CompositingExample::Lambert::AlbedoTexture", "::CompositingExample::SimpleRenderTarget1::Color")
-mmCreateCall("CallTexture2D", "::CompositingExample::Lambert::NormalTexture", "::CompositingExample::SimpleRenderTarget1::Normals")
-mmCreateCall("CallTexture2D", "::CompositingExample::Lambert::DepthTexture", "::CompositingExample::SimpleRenderTarget1::Depth")
-mmCreateCall("CallLight", "::CompositingExample::Lambert::lights", "::CompositingExample::PointLight1::deployLightSlot")
-mmCreateCall("CallCamera", "::CompositingExample::Lambert::Camera", "::CompositingExample::SimpleRenderTarget1::Camera")
-mmCreateCall("CallGPURenderTaskData", "::CompositingExample::RenderMDIMesh1::getRenderTaskData", "::CompositingExample::GlTFRenderTasksDataSource1::getData")
-mmCreateCall("CallTexture2D", "::CompositingExample::TextureCombine1::InputTexture0", "::CompositingExample::Lambert::OutputTexture")
-mmCreateCall("CallTexture2D", "::CompositingExample::TextureCombine1::InputTexture1", "::CompositingExample::SSAO::OutputTexture")
-mmCreateCall("CallTexture2D", "::CompositingExample::FXAA::InputTexture", "::CompositingExample::TextureCombine1::OutputTexture")
-mmCreateCall("CallRender3D_2", "::CompositingExample::BoundingBoxRenderer1::chainRendering", "::CompositingExample::DrawToScreen1::rendering")
-mmCreateCall("CallRender3D_2", "::CompositingExample::SimpleRenderTarget1::chainRendering", "::CompositingExample::RenderMDIMesh1::rendering")
-mmCreateCall("CallFramebufferGL", "::CompositingExample::SimpleRenderTarget1::Framebuffer", "::CompositingExample::RenderMDIMesh1::Framebuffer")
-mmCreateCall("CallRender3D_2", "::CompositingExample::DrawToScreen1::chainRendering", "::CompositingExample::SimpleRenderTarget1::rendering")
-mmCreateCall("CallRender3D_2", "::CompositingExample::View3D_21::rendering", "::CompositingExample::BoundingBoxRenderer1::rendering")
-mmCreateCall("CallTexture2D", "::CompositingExample::DrawToScreen1::InputTexture", "::CompositingExample::FXAA::OutputTexture")
+mmCreateView("Project_1", "GUIView", "GUIView1") --confPos={X=10,Y=10}
+mmCreateModule("View3D_2", "::Project_1::View3D_21") --confPos={X=94,Y=115}
+mmSetParamValue("::Project_1::View3D_21::cam::position", [=[0.404329;0.262860;0.418094]=])
+mmSetParamValue("::Project_1::View3D_21::cam::orientation", [=[-0.198369;0.364952;0.079895;0.906132]=])
+mmSetParamValue("::Project_1::View3D_21::cam::nearplane", [=[0.002441]=])
+mmSetParamValue("::Project_1::View3D_21::cam::farplane", [=[2.440673]=])
+mmSetParamValue("::Project_1::View3D_21::cam::convergenceplane", [=[0.000000]=])
+mmSetParamValue("::Project_1::View3D_21::cam::halfapertureradians", [=[0.261799]=])
+mmSetParamValue("::Project_1::View3D_21::cam::halfdisparity", [=[0.025000]=])
+mmCreateModule("DrawToScreen", "::Project_1::DrawToScreen1") --confPos={X=301,Y=36}
+mmCreateModule("BoundingBoxRenderer", "::Project_1::BoundingBoxRenderer1") --confPos={X=151,Y=230}
+mmCreateModule("RenderMDIMesh", "::Project_1::RenderMDIMesh1") --confPos={X=548,Y=577}
+mmCreateModule("GlTFRenderTasksDataSource", "::Project_1::GlTFRenderTasksDataSource1") --confPos={X=771,Y=735}
+mmCreateModule("SimpleGPUMtlDataSource", "::Project_1::SimpleGPUMtlDataSource1") --confPos={X=1164,Y=688}
+mmSetParamValue("::Project_1::SimpleGPUMtlDataSource1::BTF filename", [=[dfr_gltfExample]=])
+mmCreateModule("GPUMeshes", "::Project_1::GPUMeshes1") --confPos={X=1124,Y=764}
+mmCreateModule("GlTFFileLoader", "::Project_1::GlTFFileLoader1") --confPos={X=1270,Y=837}
+mmSetParamValue("::Project_1::GlTFFileLoader1::glTF filename", [=[..\examples\mesh\WaterBottle\glTF\WaterBottle.gltf]=])
+mmCreateModule("SimpleRenderTarget", "::Project_1::SimpleRenderTarget1") --confPos={X=1267,Y=271}
+mmCreateModule("LocalLighting", "::Project_1::LocalLighting1") --confPos={X=981,Y=24}
+mmCreateModule("ScreenSpaceEffect", "::Project_1::FXAA") --confPos={X=552,Y=69}
+mmSetParamValue("::Project_1::FXAA::Mode", [=[1]=])
+mmCreateModule("TextureCombine", "::Project_1::TextureCombine1") --confPos={X=777,Y=133}
+mmSetParamValue("::Project_1::TextureCombine1::Mode", [=[1]=])
+mmCreateModule("ScreenSpaceEffect", "::Project_1::SSAO") --confPos={X=949,Y=256}
+mmSetParamValue("::Project_1::SSAO::SSAO Samples", [=[32]=])
+mmSetParamValue("::Project_1::SSAO::SSAO Radius", [=[0.010000]=])
+mmCreateModule("DistantLight", "::Project_1::DistantLight1") --confPos={X=1256,Y=34}
+mmSetParamValue("::Project_1::DistantLight1::Direction", [=[1.000000;1.000000;1.000000]=])
+mmCreateCall("CallRenderView", "::Project_1::GUIView1::renderview", "::Project_1::View3D_21::render")
+mmCreateCall("CallRender3D_2", "::Project_1::BoundingBoxRenderer1::chainRendering", "::Project_1::DrawToScreen1::rendering")
+mmCreateCall("CallRender3D_2", "::Project_1::View3D_21::rendering", "::Project_1::BoundingBoxRenderer1::rendering")
+mmCreateCall("CallRender3D_2", "::Project_1::DrawToScreen1::chainRendering", "::Project_1::RenderMDIMesh1::rendering")
+mmCreateCall("CallGPURenderTaskData", "::Project_1::RenderMDIMesh1::getRenderTaskData", "::Project_1::GlTFRenderTasksDataSource1::getData")
+mmCreateCall("CallGPUMaterialData", "::Project_1::GlTFRenderTasksDataSource1::getMaterialData", "::Project_1::SimpleGPUMtlDataSource1::getData")
+mmCreateCall("CallGPUMeshData", "::Project_1::GlTFRenderTasksDataSource1::getMeshData", "::Project_1::GPUMeshes1::getData")
+mmCreateCall("CallMesh", "::Project_1::GPUMeshes1::CallMeshes", "::Project_1::GlTFFileLoader1::CallMeshData")
+mmCreateCall("CallGlTFData", "::Project_1::GlTFRenderTasksDataSource1::CallGlTFData", "::Project_1::GlTFFileLoader1::CallGlTFData")
+mmCreateCall("CallRender3D_2", "::Project_1::RenderMDIMesh1::chainRendering", "::Project_1::SimpleRenderTarget1::rendering")
+mmCreateCall("CallTexture2D", "::Project_1::LocalLighting1::AlbedoTexture", "::Project_1::SimpleRenderTarget1::Color")
+mmCreateCall("CallTexture2D", "::Project_1::DrawToScreen1::InputTexture", "::Project_1::FXAA::OutputTexture")
+mmCreateCall("CallTexture2D", "::Project_1::TextureCombine1::InputTexture0", "::Project_1::LocalLighting1::OutputTexture")
+mmCreateCall("CallTexture2D", "::Project_1::TextureCombine1::InputTexture1", "::Project_1::SSAO::OutputTexture")
+mmCreateCall("CallTexture2D", "::Project_1::SSAO::NormalTexture", "::Project_1::SimpleRenderTarget1::Normals")
+mmCreateCall("CallTexture2D", "::Project_1::SSAO::DepthTexture", "::Project_1::SimpleRenderTarget1::Depth")
+mmCreateCall("CallCamera", "::Project_1::SSAO::Camera", "::Project_1::SimpleRenderTarget1::Camera")
+mmCreateCall("CallCamera", "::Project_1::LocalLighting1::Camera", "::Project_1::SimpleRenderTarget1::Camera")
+mmCreateCall("CallTexture2D", "::Project_1::LocalLighting1::DepthTexture", "::Project_1::SimpleRenderTarget1::Depth")
+mmCreateCall("CallTexture2D", "::Project_1::LocalLighting1::NormalTexture", "::Project_1::SimpleRenderTarget1::Normals")
+mmCreateCall("CallLight", "::Project_1::LocalLighting1::lights", "::Project_1::DistantLight1::deployLightSlot")
+mmCreateCall("CallTexture2D", "::Project_1::FXAA::InputTexture", "::Project_1::TextureCombine1::OutputTexture")
