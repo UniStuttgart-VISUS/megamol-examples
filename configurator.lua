@@ -1,2 +1,2 @@
-mmCreateView("configurator", "GUIView", "::gui")
-mmSetParamValue("::gui::autostart_configurator", [=[true]=])
+mmCreateView("configurator","GUIView","::gui")
+mmSetParamValue("::gui::autostart_configurator",[=[true]=])
