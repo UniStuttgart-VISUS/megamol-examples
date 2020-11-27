@@ -6,7 +6,7 @@ mmCreateModule("DistantLight","::distantlight")
 mmCreateModule("SphereRenderer","::renderer")
 mmCreateModule("TestSpheresDataSource", "::data")
 
-mmSetParamValue("::renderer::renderMode", "Simple")
+mmSetParamValue("::renderer::renderMode", [=[Simple]=])
 
 mmCreateCall("CallRenderView", "::gui::renderview", "::view::render")
 mmCreateCall("CallRender3D_2", "::view::rendering", "::bbox::rendering")

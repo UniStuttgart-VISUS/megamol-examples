@@ -4,40 +4,40 @@ keyframeFile = "../examples/cinematic/testspheres_keyframes.kf"
 
 mmCreateView("cinematic_editor", "GUIView", "::GUIView1")
 mmCreateModule("SplitView", "::SplitView1")
-mmSetParamValue("::SplitView1::split.orientation", "1")
-mmSetParamValue("::SplitView1::split.pos", "0.65")
-mmSetParamValue("::SplitView1::split.colour", "white")
+mmSetParamValue("::SplitView1::split.orientation", [=[1]=])
+mmSetParamValue("::SplitView1::split.pos", [=[0.65]=])
+mmSetParamValue("::SplitView1::split.colour", [=[white]=])
 
 mmCreateModule("SplitView", "::SplitView2")
-mmSetParamValue("::SplitView2::split.pos", "0.55")
-mmSetParamValue("::SplitView2::split.colour", "white")
+mmSetParamValue("::SplitView2::split.pos", [=[0.55]=])
+mmSetParamValue("::SplitView2::split.colour", [=[white]=])
 
 mmCreateModule("KeyframeKeeper", "::KeyframeKeeper1")
 mmSetParamValue("::KeyframeKeeper1::storage::filename", keyframeFile)
 
 mmCreateModule("View2D", "::View2D1")
-mmSetParamValue("::View2D1::backCol", "black")
-mmSetParamValue("::View2D1::resetViewOnBBoxChange", "True")
-mmSetParamValue("::View2D1::showBBox", "false")
+mmSetParamValue("::View2D1::backCol", [=[black]=])
+mmSetParamValue("::View2D1::resetViewOnBBoxChange", [=[True]=])
+mmSetParamValue("::View2D1::showBBox", [=[false]=])
 
 mmCreateModule("View3D_2", "::View3D1")
-mmSetParamValue("::View3D1::backCol", "black")
+mmSetParamValue("::View3D1::backCol", [=[black]=])
 
 mmCreateModule("TimeLineRenderer", "::TimeLineRenderer1")
 
 mmCreateModule("TrackingshotRenderer", "::TrackingshotRenderer1")
 
 mmCreateModule("CinematicView", "::CinematicView1")
-mmSetParamValue("::CinematicView1::backCol", "Gray")
-mmSetParamValue("::CinematicView1::cinematic::fps", "24")
+mmSetParamValue("::CinematicView1::backCol", [=[Gray]=])
+mmSetParamValue("::CinematicView1::cinematic::fps", [=[24]=])
 
 mmCreateModule("ReplacementRenderer", "::ReplacementRenderer1")
-mmSetParamValue("::ReplacementRenderer1::hotkeyAssignment", "Alt + 1")
-mmSetParamValue("::ReplacementRenderer1::replacement", "true")
+mmSetParamValue("::ReplacementRenderer1::hotkeyAssignment", [=[Alt + 1]=])
+mmSetParamValue("::ReplacementRenderer1::replacement", [=[true]=])
 
 mmCreateModule("ReplacementRenderer", "::ReplacementRenderer2")
-mmSetParamValue("::ReplacementRenderer2::hotkeyAssignment", "Alt + 2")
-mmSetParamValue("::ReplacementRenderer2::replacement", "false")
+mmSetParamValue("::ReplacementRenderer2::hotkeyAssignment", [=[Alt + 2]=])
+mmSetParamValue("::ReplacementRenderer2::replacement", [=[false]=])
 
 mmCreateCall("CallRenderView", "::GUIView1::renderview", "::SplitView1::render")
 mmCreateCall("CallRenderView", "::SplitView1::render1", "::SplitView2::render")
