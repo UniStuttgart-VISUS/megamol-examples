@@ -1,6 +1,9 @@
-﻿
-fileToRender = "../examples/testspheres.lua"
-keyframeFile = "../examples/cinematic/testspheres_keyframes.kf"
+﻿-- Adapt the following variables to your needs:
+
+project_file = "../examples/testspheres.lua"
+keyframe_file = "../examples/cinematic/testspheres_keyframes.kf"
+
+--- Do not change anything below ----------------------------------------------
 
 mmCreateView("cinematic_editor", "GUIView", "::cinematic::GUIView1")
 mmCreateModule("SplitView", "::cinematic::SplitView1")
@@ -13,7 +16,7 @@ mmSetParamValue("::cinematic::SplitView2::split.pos", [=[0.55]=])
 mmSetParamValue("::cinematic::SplitView2::split.colour", [=[white]=])
 
 mmCreateModule("KeyframeKeeper", "::cinematic::KeyframeKeeper1")
-mmSetParamValue("::cinematic::KeyframeKeeper1::storage::filename", keyframeFile)
+mmSetParamValue("::cinematic::KeyframeKeeper1::storage::filename", keyframe_file)
 
 mmCreateModule("View2D", "::cinematic::View2D1")
 mmSetParamValue("::cinematic::View2D1::backCol", [=[black]=])
@@ -84,15 +87,22 @@ function trafo(str)
   local newcontent  = str:gsub("mmCreateView%(.-%)", "")
   newcontent = newcontent:gsub("mmCreateModule%(.-\"View.-%)", "")
   newcontent = newcontent:gsub("mmCreateCall%(\"CallRenderView.-%)", "")
-  newcontent = newcontent:gsub('mmCreateCall%([\"\']CallRender3D_2[\'\"],%s*[\'\"]' 
-      .. '.-' .. viewmoduleinst .. '::rendering[\'\"],([^,]+)%)', 'mmCreateCall("CallRender3D_2", "::cinematic::ReplacementRenderer1::chainRendering",%1)'
-      .. "\n" .. 'mmCreateCall("CallRender3D_2", "::cinematic::ReplacementRenderer2::chainRendering",%1)')
+  newcontent = newcontent:gsub('mmCreateCall%([\"\']CallRender3D_2[\'\"],%s*[\'\"]' .. '.-' .. viewmoduleinst .. '::rendering[\'\"],([^,]+)%)', 
+  'mmCreateCall("CallRender3D_2", "::cinematic::ReplacementRenderer1::chainRendering",%1)' .. "\n" .. 
+  'mmCreateCall("CallRender3D_2", "::cinematic::ReplacementRenderer2::chainRendering",%1)')
   
-  return newcontent
+  -- Assign all parameter values of main view in given project file to cinematic view:
+  local newestcontent = newcontent:gsub('mmSetParamValue%([\"\']' .. viewmoduleinst .. '(.*)%)', 'mmSetParamValue("::cinematic::CinematicView1%1)')
+  while newcontent ~= newestcontent do
+    newcontent = newestcontent
+    newestcontent = newcontent:gsub('mmSetParamValue%([\"\']' .. viewmoduleinst .. '(.*)%)', 'mmSetParamValue("::cinematic::CinematicView1%1)')
+  end
+
+  return newestcontent
 end
 
-local content = mmReadTextFile(fileToRender, trafo)
-print("lua INFO: Transformed Include Project File =\n" .. content .. "\n\n")
+local content = mmReadTextFile(project_file, trafo)
+print("lua INFO: Transformed Given Project File =\n" .. content .. "\n\n ")
 code = load(content)
 code()
 
