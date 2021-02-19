@@ -39,7 +39,7 @@ function doRendering(id, cfile, pfile, afile)
 
         mmCreateModule("QuartzCrystalRenderer", "::quartz_demo::rnd")
         mmSetParamValue("::quartz_demo::rnd::idx", "1")
-        mmCreateCall("CallRender3D", "::quartz_demo::v::rendering", "::quartz_demo::rnd::rendering")
+        mmCreateCall("CallRender3DGL", "::quartz_demo::v::rendering", "::quartz_demo::rnd::rendering")
         mmCreateCall("QuartzCrystalDataCall", "::quartz_demo::rnd::datain", "::quartz_demo::cryst::dataout")
     
     elseif id == "2" then
@@ -50,9 +50,9 @@ function doRendering(id, cfile, pfile, afile)
         mmSetParamValue("::quartz_demo::switch::selection", "2")
         mmCreateModule("QuartzRenderer", "::quartz_demo::rnd1")
         mmCreateModule("QuartzTexRenderer", "::quartz_demo::rnd2")
-        mmCreateCall("CallRender3D", "::quartz_demo::v::rendering", "::quartz_demo::switch::rendering")
-        mmCreateCall("CallRender3D", "::quartz_demo::switch::renderer1", "::quartz_demo::rnd1::rendering")
-        mmCreateCall("CallRender3D", "::quartz_demo::switch::renderer2", "::quartz_demo::rnd2::rendering")
+        mmCreateCall("CallRender3DGL", "::quartz_demo::v::rendering", "::quartz_demo::switch::rendering")
+        mmCreateCall("CallRender3DGL", "::quartz_demo::switch::renderer1", "::quartz_demo::rnd1::rendering")
+        mmCreateCall("CallRender3DGL", "::quartz_demo::switch::renderer2", "::quartz_demo::rnd2::rendering")
         mmCreateCall("QuartzParticleGridDataCall", "::quartz_demo::rnd1::datain", "::quartz_demo::grid::dataout")
         mmCreateCall("QuartzParticleGridDataCall", "::quartz_demo::rnd2::datain", "::quartz_demo::grid::dataout")
         mmCreateCall("QuartzCrystalDataCall", "::quartz_demo::rnd1::typesin", "::quartz_demo::cryst::dataout")
@@ -74,7 +74,7 @@ function doRendering(id, cfile, pfile, afile)
     
         mmSetParamValue("::quartz_demo::v::backCol", "slategray")
         mmCreateModule("PoreNetExtractor", "::quartz_demo::e")
-        mmCreateCall("CallRender3D", "::quartz_demo::v::rendering", "::quartz_demo::e::rendering")
+        mmCreateCall("CallRender3DGL", "::quartz_demo::v::rendering", "::quartz_demo::e::rendering")
         mmCreateCall("QuartzParticleGridDataCall", "::quartz_demo::e::datain", "::quartz_demo::grid::dataout")
         mmCreateCall("QuartzCrystalDataCall", "::quartz_demo::e::typesin", "::quartz_demo::cryst::dataout")
     
@@ -88,9 +88,9 @@ end
 if role == "head" then
 
     if renderer == "3" then 
-        mmCreateView("quartz_demo", "View2D", "v")
+        mmCreateView("quartz_demo", "View2DGL", "v")
     else 
-        mmCreateView("quartz_demo", "View3DSpaceMouse", "v")
+        mmCreateView("quartz_demo", "View3DGLSpaceMouse", "v")
     end
 
     mmCreateJob("simpleclusterserver", "SimpleClusterServer", "::scs")
@@ -104,9 +104,9 @@ if role == "head" then
 else
 
     if renderer == "3" then 
-        mmCreateModule("View2D", "::quartz_demo::v")
+        mmCreateModule("View2DGL", "::quartz_demo::v")
     else 
-        mmCreateModule("View3D", "::quartz_demo::v")
+        mmCreateModule("View3DGL", "::quartz_demo::v")
     end
 
     doRendering(renderer, crystFile, posFile, attribFile)

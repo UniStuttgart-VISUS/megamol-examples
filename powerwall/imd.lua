@@ -30,7 +30,7 @@ function doRendering(grim, cfile)
 
     mmCreateModule("GrimRenderer", "::imd_demo::spheres")
     mmCreateModule("DataGridder", "::imd_demo::grid")
-    mmCreateCall("CallRender3D", "::imd_demo::v::rendering", "::imd_demo::spheres::rendering")
+    mmCreateCall("CallRender3DGL", "::imd_demo::v::rendering", "::imd_demo::spheres::rendering")
     mmCreateCall("CallGetTransferFunction", "::imd_demo::spheres::gettransferfunction", "::imd_demo::tf::gettransferfunction")
     mmCreateCall("MultiParticleDataCall", "::imd_demo::grid::indata", "::imd_demo::data::getdata")
     mmCreateCall("ParticleGridDataCall", "::imd_demo::spheres::getdata", "::imd_demo::grid::outdata")
@@ -41,7 +41,7 @@ function doRendering(grim, cfile)
     mmSetParamValue("::imd_demo::spheres::renderMode", "Simple") 
     mmCreateModule("AddParticleColours", "::imd_demo::colourizer")
     mmCreateModule("ClipPlane", "::imd_demo::clip")
-    mmCreateCall("CallRender3D", "::imd_demo::v::rendering", "::imd_demo::spheres::rendering")
+    mmCreateCall("CallRender3DGL", "::imd_demo::v::rendering", "::imd_demo::spheres::rendering")
     mmCreateCall("MultiParticleDataCall", "::imd_demo::spheres::getdata", "::imd_demo::colourizer::putdata")
     mmCreateCall("MultiParticleDataCall", "::imd_demo::colourizer::getdata", "::imd_demo::data::getdata")
     mmCreateCall("CallGetTransferFunction", "::imd_demo::colourizer::gettransferfunction", "::imd_demo::tf::gettransferfunction")
@@ -52,7 +52,7 @@ end
 
 if role == "head" then
   
-  mmCreateView("imd_demo", "View3DSpaceMouse", "v")
+  mmCreateView("imd_demo", "View3DGLSpaceMouse", "v")
   mmSetParamValue("::imd_demo::v::showBBox", "False")
   mmSetParamValue("::imd_demo::v::viewcube::show", "False")
 
@@ -65,7 +65,7 @@ if role == "head" then
   doRendering(useGrim, chkptFile)
 
 else
-  mmCreateModule("View3D", "::imd_demo::v")
+  mmCreateModule("View3DGL", "::imd_demo::v")
   mmSetParamValue("::imd_demo::v::showBBox", "False")
   mmSetParamValue("::imd_demo::v::viewcube::show", "False")
 

@@ -8,7 +8,7 @@ print("I am a " .. role .. " running on " .. machine)
 
 if role == "head" then
   
-  mmCreateView("img_demo", "View3DSpaceMouse", "v")
+  mmCreateView("img_demo", "View3DGLSpaceMouse", "v")
 
   mmCreateJob("simpleclusterserver", "SimpleClusterServer", "::scs")
   mmSetParamValue("::scs::viewname", "::img_demo::v")
@@ -23,11 +23,11 @@ if role == "head" then
   mmSetParamValue("::img_demo::v::resetViewOnBBoxChange", "true")
   mmCreateModule("ImageViewer", "::img_demo::image")
   mmSetParamValue("::img_demo::image::leftImg", file)
-  mmCreateCall("CallRender3D", "::img_demo::v::rendering", "::img_demo::image::rendering")
+  mmCreateCall("CallRender3DGL", "::img_demo::v::rendering", "::img_demo::image::rendering")
 
 else
 
-  mmCreateModule("View3D", "::img_demo::v")
+  mmCreateModule("View3DGL", "::img_demo::v")
   mmSetParamValue("::img_demo::v::backCol", "black")
   mmSetParamValue("::img_demo::v::showBBox", "off")
   mmSetParamValue("::img_demo::v::viewKey::MoveStep", "100")
@@ -35,6 +35,6 @@ else
   mmSetParamValue("::img_demo::v::resetViewOnBBoxChange", "true")
   mmCreateModule("ImageViewer", "::img_demo::image")
   mmSetParamValue("::img_demo::image::leftImg", file)
-  mmCreateCall("CallRender3D", "::img_demo::v::rendering", "::img_demo::image::rendering")
+  mmCreateCall("CallRender3DGL", "::img_demo::v::rendering", "::img_demo::image::rendering")
 
 end

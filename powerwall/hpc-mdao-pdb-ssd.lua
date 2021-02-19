@@ -9,7 +9,7 @@ print("I am a " .. role .. " running on " .. machine)
 
 if role == "head" then
   
-  mmCreateView("mdao_demo", "View3DSpaceMouse", "v")
+  mmCreateView("mdao_demo", "View3DGLSpaceMouse", "v")
   
   mmCreateJob("simpleclusterserver", "SimpleClusterServer", "::scs")
   mmSetParamValue("::scs::viewname", "::mdao_demo::v")
@@ -35,13 +35,13 @@ if role == "head" then
   mmCreateModule("LinearTransferFunction", "::mdao_demo::LinearTransferFunction1")
   mmSetParamValue("::mdao_demo::LinearTransferFunction1::mincolour", "lightblue")
   mmSetParamValue("::mdao_demo::LinearTransferFunction1::maxcolour", "lightblue")
-  mmCreateCall("CallRender3D", "::mdao_demo::v::rendering", "::mdao_demo::AOSphereRenderer1::rendering")
+  mmCreateCall("CallRender3DGL", "::mdao_demo::v::rendering", "::mdao_demo::AOSphereRenderer1::rendering")
   mmCreateCall("CallGetTransferFunction", "::mdao_demo::AOSphereRenderer1::gettransferfunction", "::mdao_demo::LinearTransferFunction1::gettransferfunction")
   mmCreateCall("MolecularDataCall", "::mdao_demo::AOSphereRenderer1::getdata", "::mdao_demo::PDBLoader1::dataout")
 
 else
-  mmCreateModule("View3D", "::mdao_demo::v")
-  --mmCreateView("mdao_demo", "View3D", "v")
+  mmCreateModule("View3DGL", "::mdao_demo::v")
+  --mmCreateView("mdao_demo", "View3DGL", "v")
 
   mmCreateModule("PDBLoader", "::mdao_demo::PDBLoader1")
   mmSetParamValue("::mdao_demo::PDBLoader1::pdbFilename", pdbFile)
@@ -61,7 +61,7 @@ else
   mmCreateModule("LinearTransferFunction", "::mdao_demo::LinearTransferFunction1")
   mmSetParamValue("::mdao_demo::LinearTransferFunction1::mincolour", "lightblue")
   mmSetParamValue("::mdao_demo::LinearTransferFunction1::maxcolour", "lightblue")
-  mmCreateCall("CallRender3D", "::mdao_demo::v::rendering", "::mdao_demo::AOSphereRenderer1::rendering")
+  mmCreateCall("CallRender3DGL", "::mdao_demo::v::rendering", "::mdao_demo::AOSphereRenderer1::rendering")
   mmCreateCall("CallGetTransferFunction", "::mdao_demo::AOSphereRenderer1::gettransferfunction", "::mdao_demo::LinearTransferFunction1::gettransferfunction")
   mmCreateCall("MolecularDataCall", "::mdao_demo::AOSphereRenderer1::getdata", "::mdao_demo::PDBLoader1::dataout")
 

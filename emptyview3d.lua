@@ -1,1 +1,1 @@
-mmCreateView("emptyview3d", "View3D", "view")
+mmCreateView("emptyview3d", "View3DGL", "view")

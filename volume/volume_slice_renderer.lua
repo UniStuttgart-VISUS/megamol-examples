@@ -7,7 +7,7 @@ Use this command line arguments to start MegaMol
  
 mmCreateView("VolumeSliceExample", "GUIView", "GUIView1")
 
-mmCreateModule("View3D_2", "::VolumeSliceExample::View3D_21")
+mmCreateModule("View3DGL", "::VolumeSliceExample::View3DGL1")
 
 mmCreateModule("BoundingBoxRenderer", "::VolumeSliceExample::BoundingBoxRenderer1")
 
@@ -25,7 +25,7 @@ mmCreateModule("VolumetricDataSource", "::VolumeSliceExample::VolumetricDataSour
 mmSetParamValue("::VolumeSliceExample::VolumetricDataSource1::FileName", "../examples/sampledata/bonsai.dat")
 
 mmCreateModule("ScreenShooter", "::VolumeSliceExample::ScreenShooter1")
-mmSetParamValue("::VolumeSliceExample::ScreenShooter1::view", "::VolumeSliceExample::View3D_21")
+mmSetParamValue("::VolumeSliceExample::ScreenShooter1::view", "::VolumeSliceExample::View3DGL1")
 mmSetParamValue("::VolumeSliceExample::ScreenShooter1::imgWidth", "1920")
 mmSetParamValue("::VolumeSliceExample::ScreenShooter1::imgHeight", "1080")
 mmSetParamValue("::VolumeSliceExample::ScreenShooter1::tileWidth", "1920")
@@ -34,7 +34,7 @@ mmSetParamValue("::VolumeSliceExample::ScreenShooter1::filename", "RaycastVolume
 
 mmCreateCall("CallClipPlane", "::VolumeSliceExample::VolumeSliceRenderer_21::getclipplane", "::VolumeSliceExample::ClipPlane1::getclipplane")
 mmCreateCall("CallGetTransferFunction", "::VolumeSliceExample::VolumeSliceRenderer_21::gettransferfunction", "::VolumeSliceExample::TransferFunction1::gettransferfunction")
-mmCreateCall("CallRenderView", "::VolumeSliceExample::GUIView1::renderview", "::VolumeSliceExample::View3D_21::render")
-mmCreateCall("CallRender3D_2", "::VolumeSliceExample::BoundingBoxRenderer1::chainRendering", "::VolumeSliceExample::VolumeSliceRenderer_21::rendering")
-mmCreateCall("CallRender3D_2", "::VolumeSliceExample::View3D_21::rendering", "::VolumeSliceExample::BoundingBoxRenderer1::rendering")
+mmCreateCall("CallRenderViewGL", "::VolumeSliceExample::GUIView1::renderview", "::VolumeSliceExample::View3DGL1::render")
+mmCreateCall("CallRender3DGL", "::VolumeSliceExample::BoundingBoxRenderer1::chainRendering", "::VolumeSliceExample::VolumeSliceRenderer_21::rendering")
+mmCreateCall("CallRender3DGL", "::VolumeSliceExample::View3DGL1::rendering", "::VolumeSliceExample::BoundingBoxRenderer1::rendering")
 mmCreateCall("VolumetricDataCall", "::VolumeSliceExample::VolumeSliceRenderer_21::getVol", "::VolumeSliceExample::VolumetricDataSource1::GetData")

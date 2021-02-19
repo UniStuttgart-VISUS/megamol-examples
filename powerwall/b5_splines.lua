@@ -19,7 +19,7 @@ function doRendering(spl, sfile, mfile)
     mmSetParamValue("::b5_demo::data::filename", sfile)
     mmCreateModule("SiffCSplineFitter", "::b5_demo::splineFitter")
     mmSetParamValue("::b5_demo::splineFitter::deCycle", "true")
-    mmCreateCall("CallRender3D", "::b5_demo::v::rendering", "::b5_demo::splines::rendering")
+    mmCreateCall("CallRender3DGL", "::b5_demo::v::rendering", "::b5_demo::splines::rendering")
     mmCreateCall("BezierCurvesListDataCall", "::b5_demo::splines::getdata", "::b5_demo::splineFitter::getdata")
     mmCreateCall("MultiParticleDataCall", "::b5_demo::splineFitter::indata", "::b5_demo::data::getdata")
 
@@ -57,7 +57,7 @@ function doRendering(spl, sfile, mfile)
     mmSetParamValue("::b5_demo::tf::enable11", "false")
     mmSetParamValue("::b5_demo::tf::colour11", "#db0000")
     mmSetParamValue("::b5_demo::tf::maxcolour", "coral")
-    mmCreateCall("CallRender3D", "::b5_demo::v::rendering", "::b5_demo::rnd::rendering")
+    mmCreateCall("CallRender3DGL", "::b5_demo::v::rendering", "::b5_demo::rnd::rendering")
     mmCreateCall("MultiParticleDataCall", "::b5_demo::rnd::getdata", "::b5_demo::dat::getdata")
     mmCreateCall("CallGetTransferFunction", "::b5_demo::rnd::gettransferfunction", "::b5_demo::tf::gettransferfunction")
 
@@ -66,7 +66,7 @@ end
 
 
 if role == "head" then
-  mmCreateView("b5_demo", "View3DSpaceMouse", "v")
+  mmCreateView("b5_demo", "View3DGLSpaceMouse", "v")
   
   mmCreateJob("simpleclusterserver", "SimpleClusterServer", "::scs")
   mmSetParamValue("::scs::viewname", "::b5_demo::v")
@@ -78,7 +78,7 @@ if role == "head" then
 
 else
 
-  mmCreateModule("View3D", "::b5_demo::v")
+  mmCreateModule("View3DGL", "::b5_demo::v")
 
   doRendering(showSplines, siffFile, mmpldFile)
 

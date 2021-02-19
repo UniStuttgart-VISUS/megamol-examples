@@ -7,7 +7,7 @@ Use this command line arguments to start MegaMol
 
 mmCreateView("RaycastVolumeExample", "GUIView", "GUIView1")
 
-mmCreateModule("View3D_2", "::RaycastVolumeExample::View3D_21")
+mmCreateModule("View3DGL", "::RaycastVolumeExample::View3DGL1")
 
 mmCreateModule("BoundingBoxRenderer", "::RaycastVolumeExample::BoundingBoxRenderer1")
 
@@ -22,7 +22,7 @@ mmCreateModule("VolumetricDataSource", "::RaycastVolumeExample::VolumetricDataSo
 mmSetParamValue("::RaycastVolumeExample::VolumetricDataSource1::FileName", "../examples/sampledata/bonsai.dat")
 
 mmCreateModule("ScreenShooter", "::RaycastVolumeExample::ScreenShooter1")
-mmSetParamValue("::RaycastVolumeExample::ScreenShooter1::view", "::RaycastVolumeExample::View3D_21")
+mmSetParamValue("::RaycastVolumeExample::ScreenShooter1::view", "::RaycastVolumeExample::View3DGL1")
 mmSetParamValue("::RaycastVolumeExample::ScreenShooter1::imgWidth", "1920")
 mmSetParamValue("::RaycastVolumeExample::ScreenShooter1::imgHeight", "1080")
 mmSetParamValue("::RaycastVolumeExample::ScreenShooter1::tileWidth", "1920")
@@ -31,6 +31,6 @@ mmSetParamValue("::RaycastVolumeExample::ScreenShooter1::filename", "RaycastVolu
 
 mmCreateCall("CallGetTransferFunction", "::RaycastVolumeExample::RaycastVolumeRenderer1::getTranfserFunction", "::RaycastVolumeExample::TransferFunction1::gettransferfunction")
 mmCreateCall("VolumetricDataCall", "::RaycastVolumeExample::RaycastVolumeRenderer1::getData", "::RaycastVolumeExample::VolumetricDataSource1::GetData")
-mmCreateCall("CallRenderView", "::RaycastVolumeExample::GUIView1::renderview", "::RaycastVolumeExample::View3D_21::render")
-mmCreateCall("CallRender3D_2", "::RaycastVolumeExample::View3D_21::rendering", "::RaycastVolumeExample::BoundingBoxRenderer1::rendering")
-mmCreateCall("CallRender3D_2", "::RaycastVolumeExample::BoundingBoxRenderer1::chainRendering", "::RaycastVolumeExample::RaycastVolumeRenderer1::rendering")
+mmCreateCall("CallRenderViewGL", "::RaycastVolumeExample::GUIView1::renderview", "::RaycastVolumeExample::View3DGL1::render")
+mmCreateCall("CallRender3DGL", "::RaycastVolumeExample::View3DGL1::rendering", "::RaycastVolumeExample::BoundingBoxRenderer1::rendering")
+mmCreateCall("CallRender3DGL", "::RaycastVolumeExample::BoundingBoxRenderer1::chainRendering", "::RaycastVolumeExample::RaycastVolumeRenderer1::rendering")

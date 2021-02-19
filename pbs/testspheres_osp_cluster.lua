@@ -8,7 +8,7 @@ print("I am a " .. role)
 if role == "head" then
 
     mmCreateView("testview", "GUIView", "gui")
-    mmCreateModule("View3D", "::testview::v")
+    mmCreateModule("View3DGL", "::testview::v")
     mmCreateJob("simpleclusterserver", "SimpleClusterServer", "::scs")
     mmSetParamValue("::scs::viewname", "::testview::v")
     mmSetParamValue("::scs::server::Name", headNode)
@@ -17,11 +17,11 @@ if role == "head" then
 
     mmCreateModule("FBOCompositor2", "::testview::fboc")
 
-    mmCreateCall("CallRenderView", "::testview::gui::renderview", "::testview::v::render")
-    mmCreateCall("CallRender3D", "::testview::v::rendering", "::testview::fboc::rendering")
+    mmCreateCall("CallRenderViewGL", "::testview::gui::renderview", "::testview::v::render")
+    mmCreateCall("CallRender3DGL", "::testview::v::rendering", "::testview::fboc::rendering")
 else
 
-    mmCreateModule("View3D", "::testview::v")
+    mmCreateModule("View3DGL", "::testview::v")
     mmCreateModule("OSPRaySphereGeometry", "::testview::geo")
     mmCreateModule("OSPRayOBJMaterial", "::testview::mat")
     mmCreateModule("OSPRayRenderer", "::testview::rnd")
@@ -32,7 +32,7 @@ else
     mmCreateCall("CallOSPRayMaterial", "::testview::rnd::getMaterialSlot", "::testview::mat::deployMaterialSlot")
     mmCreateCall("CallOSPRayStructure", "::testview::rnd::getStructure", "::testview::geo::deployStructureSlot")
     mmCreateCall("CallOSPRayLight", "::testview::rnd::getLight", "::testview::light::deployLightSlot")
-    mmCreateCall("CallRender3D", "::testview::v::rendering", "::testview::rnd::rendering")
+    mmCreateCall("CallRender3DGL", "::testview::v::rendering", "::testview::rnd::rendering")
     mmCreateCall("MultiParticleDataCall", "::testview::geo::getdata", "::testview::dat::getData")
 
     mmCreateModule("FBOTransmitter2", "::testview::fbot")

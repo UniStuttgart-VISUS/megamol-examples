@@ -1,4 +1,4 @@
-mmCreateView("testspheres", "View3D_2","::view")
+mmCreateView("testspheres", "View3DGL","::view")
 
 mmCreateModule("BoundingBoxRenderer","::bbox")
 mmCreateModule("DistantLight","::distantlight")
@@ -7,7 +7,7 @@ mmCreateModule("TestSpheresDataSource", "::data")
 
 mmSetParamValue("::renderer::renderMode", [=[Simple]=])
 
-mmCreateCall("CallRender3D_2", "::view::rendering", "::bbox::rendering")
-mmCreateCall("CallRender3D_2","::bbox::chainRendering","::renderer::rendering")
+mmCreateCall("CallRender3DGL", "::view::rendering", "::bbox::rendering")
+mmCreateCall("CallRender3DGL","::bbox::chainRendering","::renderer::rendering")
 mmCreateCall("MultiParticleDataCall", "::renderer::getData", "::data::getData")
 mmCreateCall("CallLight","::renderer::lights","::distantlight::deployLightSlot")
