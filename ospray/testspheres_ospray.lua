@@ -1,3 +1,4 @@
+
 mmCreateView("GraphEntry_1","View3DGL","::View3DGL_1") 
 
 mmCreateModule("ContextToGL","::ContextToGL_1") 
@@ -32,7 +33,6 @@ mmSetParamValue("::View3DGL_1::viewKey::AngleStep",[=[90.000000]=])
 mmSetParamValue("::View3DGL_1::viewKey::FixToWorldUp",[=[true]=])
 mmSetParamValue("::View3DGL_1::viewKey::MouseSensitivity",[=[3.000000]=])
 mmSetParamValue("::View3DGL_1::viewKey::RotPoint",[=[Look-At]=])
-mmSetParamValue("::View3DGL_1::viewcube::show",[=[true]=])
 mmSetParamValue("::View3DGL_1::hookOnChange",[=[false]=])
 mmSetParamValue("::View3DGL_1::cam::position",[=[0;0;4.7320509]=])
 mmSetParamValue("::View3DGL_1::cam::orientation",[=[0;0;0;1]=])
@@ -70,4 +70,3 @@ mmSetParamValue("::OSPRayOBJMaterial_1::Opacity",[=[1.000000]=])
 mmSetParamValue("::OSPRayOBJMaterial_1::TransparencyFilterColor",[=[0;0;0]=])
 mmSetParamValue("::TestSpheresDataSource_1::numSpheres",[=[15]=])
 mmSetParamValue("::TestSpheresDataSource_1::numFrames",[=[100]=])
-
