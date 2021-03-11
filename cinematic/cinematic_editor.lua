@@ -31,6 +31,7 @@ mmCreateModule("TrackingshotRenderer", "::cinematic::TrackingshotRenderer1")
 mmCreateModule("CinematicView", "::cinematic::CinematicView1")
 mmSetParamValue("::cinematic::CinematicView1::backCol", [=[Gray]=])
 mmSetParamValue("::cinematic::CinematicView1::cinematic::fps", [=[24]=])
+mmSetParamValue("::cinematic::CinematicView1::view::showViewCube",[=[true]=])
 
 mmCreateModule("ReplacementRenderer", "::cinematic::ReplacementRenderer1")
 mmSetParamValue("::cinematic::ReplacementRenderer1::hotkeyAssignment", [=[Alt + 1]=])
