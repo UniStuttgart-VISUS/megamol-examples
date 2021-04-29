@@ -5,9 +5,7 @@ Use this command line arguments to start MegaMol
 
  --]]
 
-mmCreateView("RaycastVolumeExample", "GUIView", "GUIView1")
-
-mmCreateModule("View3DGL", "::RaycastVolumeExample::View3DGL1")
+mmCreateView("RaycastVolumeExample", "View3DGL", "::RaycastVolumeExample::View3DGL1")
 
 mmCreateModule("BoundingBoxRenderer", "::RaycastVolumeExample::BoundingBoxRenderer1")
 
@@ -31,6 +29,5 @@ mmSetParamValue("::RaycastVolumeExample::ScreenShooter1::filename", "RaycastVolu
 
 mmCreateCall("CallGetTransferFunction", "::RaycastVolumeExample::RaycastVolumeRenderer1::getTranfserFunction", "::RaycastVolumeExample::TransferFunction1::gettransferfunction")
 mmCreateCall("VolumetricDataCall", "::RaycastVolumeExample::RaycastVolumeRenderer1::getData", "::RaycastVolumeExample::VolumetricDataSource1::GetData")
-mmCreateCall("CallRenderViewGL", "::RaycastVolumeExample::GUIView1::renderview", "::RaycastVolumeExample::View3DGL1::render")
 mmCreateCall("CallRender3DGL", "::RaycastVolumeExample::View3DGL1::rendering", "::RaycastVolumeExample::BoundingBoxRenderer1::rendering")
 mmCreateCall("CallRender3DGL", "::RaycastVolumeExample::BoundingBoxRenderer1::chainRendering", "::RaycastVolumeExample::RaycastVolumeRenderer1::rendering")
