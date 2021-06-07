@@ -1,0 +1,141 @@
+mmCreateView("GraphEntry_1","View3DGL","::View3DGL_1") 
+
+mmCreateModule("OSPRaySphereGeometry","::OSPRaySphereGeometry_3") 
+mmCreateModule("OSPRaySphereGeometry","::OSPRaySphereGeometry_2") 
+mmCreateModule("adiosDataSource","::adiosDataSource_1") 
+mmCreateModule("TransferFunction","::TransferFunction_1") 
+mmCreateModule("ls1ParticleFormat","::ls1ParticleFormat_1") 
+mmCreateModule("OSPRayOBJMaterial","::OSPRayOBJMaterial_1") 
+mmCreateModule("OSPRaySphereGeometry","::OSPRaySphereGeometry_1") 
+mmCreateModule("AmbientLight","::AmbientLight_1") 
+mmCreateModule("OSPRayRenderer","::OSPRayRenderer_1") 
+mmCreateModule("OSPRayToGL","::OSPRayToGL_1") 
+mmCreateModule("OSPRayOBJMaterial","::OSPRayOBJMaterial_2") 
+mmCreateModule("OSPRayOBJMaterial","::OSPRayOBJMaterial_3") 
+mmCreateModule("BoundingBoxRenderer","::BoundingBoxRenderer_1") 
+
+mmCreateCall("CallOSPRayMaterial","::OSPRaySphereGeometry_3::getMaterialSlot","::OSPRayOBJMaterial_3::deployMaterialSlot")
+mmCreateCall("MultiParticleDataCall","::OSPRaySphereGeometry_3::getdata","::ls1ParticleFormat_1::mpSlot")
+mmCreateCall("CallOSPRayStructure","::OSPRaySphereGeometry_2::getStructureSlot","::OSPRaySphereGeometry_3::deployStructureSlot")
+mmCreateCall("CallOSPRayMaterial","::OSPRaySphereGeometry_2::getMaterialSlot","::OSPRayOBJMaterial_2::deployMaterialSlot")
+mmCreateCall("MultiParticleDataCall","::OSPRaySphereGeometry_2::getdata","::ls1ParticleFormat_1::mpSlot")
+mmCreateCall("CallADIOSData","::ls1ParticleFormat_1::adiosSlot","::adiosDataSource_1::getdata")
+mmCreateCall("CallGetTransferFunction","::ls1ParticleFormat_1::transferfunctionSlot","::TransferFunction_1::gettransferfunction")
+mmCreateCall("CallOSPRayStructure","::OSPRaySphereGeometry_1::getStructureSlot","::OSPRaySphereGeometry_2::deployStructureSlot")
+mmCreateCall("CallOSPRayMaterial","::OSPRaySphereGeometry_1::getMaterialSlot","::OSPRayOBJMaterial_1::deployMaterialSlot")
+mmCreateCall("MultiParticleDataCall","::OSPRaySphereGeometry_1::getdata","::ls1ParticleFormat_1::mpSlot")
+mmCreateCall("CallLight","::OSPRayRenderer_1::lights","::AmbientLight_1::deployLightSlot")
+mmCreateCall("CallOSPRayStructure","::OSPRayRenderer_1::getStructure","::OSPRaySphereGeometry_1::deployStructureSlot")
+mmCreateCall("CallRender3D","::OSPRayToGL_1::getContext","::OSPRayRenderer_1::rendering")
+mmCreateCall("CallRender3DGL","::View3DGL_1::rendering","::BoundingBoxRenderer_1::rendering")
+mmCreateCall("CallRender3DGL","::BoundingBoxRenderer_1::chainRendering","::OSPRayToGL_1::rendering")
+
+mmSetParamValue("::OSPRaySphereGeometry_3::ParticleList",[=[2]=])
+mmSetParamValue("::OSPRaySphereGeometry_2::ParticleList",[=[1]=])
+mmSetParamValue("::adiosDataSource_1::filename",[=[../sampledata/co2_merkers_checkpoint.bp]=])
+mmSetParamValue("::TransferFunction_1::TransferFunction",[=[{
+  "IgnoreProjectRange": true,
+  "Interpolation": "LINEAR",
+  "Nodes": [
+    [
+      9.999022586271167e-05,
+      9.998999303206801e-05,
+      9.999999747378752e-05,
+      1.0,
+      0.0,
+      0.05000000074505806
+    ],
+    [
+      1.0,
+      0.024479985237121582,
+      0.0,
+      1.0,
+      0.46427497267723083,
+      0.05000000074505806
+    ],
+    [
+      1.0,
+      0.023868262767791748,
+      0.0,
+      1.0,
+      1.0,
+      0.05000000074505806
+    ]
+  ],
+  "TextureSize": 256,
+  "ValueRange": [
+    0.0,
+    2.0
+  ]
+}]=])
+mmSetParamValue("::ls1ParticleFormat_1::representation",[=[Atoms]=])
+mmSetParamValue("::OSPRayOBJMaterial_1::DiffuseColor",[=[0.800000012;0.800000012;0.800000012]=])
+mmSetParamValue("::OSPRayOBJMaterial_1::SpecularColor",[=[0;0;0]=])
+mmSetParamValue("::OSPRayOBJMaterial_1::Shininess",[=[10.000000]=])
+mmSetParamValue("::OSPRayOBJMaterial_1::Opacity",[=[1.000000]=])
+mmSetParamValue("::OSPRayOBJMaterial_1::TransparencyFilterColor",[=[0;0;0]=])
+mmSetParamValue("::OSPRaySphereGeometry_1::ParticleList",[=[0]=])
+mmSetParamValue("::AmbientLight_1::Intensity",[=[1.000000]=])
+mmSetParamValue("::AmbientLight_1::Color",[=[#cccccc]=])
+mmSetParamValue("::OSPRayRenderer_1::SciVis::AOsamples",[=[1]=])
+mmSetParamValue("::OSPRayRenderer_1::SciVis::AOdistance",[=[100000002004087734272.000000]=])
+mmSetParamValue("::OSPRayRenderer_1::accumulate",[=[true]=])
+mmSetParamValue("::OSPRayRenderer_1::SamplesPerPixel",[=[1]=])
+mmSetParamValue("::OSPRayRenderer_1::maxRecursion",[=[10]=])
+mmSetParamValue("::OSPRayRenderer_1::Type",[=[SciVis]=])
+mmSetParamValue("::OSPRayRenderer_1::SciVis::Shadows",[=[false]=])
+mmSetParamValue("::OSPRayRenderer_1::PathTracer::BackgroundTexture",[=[]=])
+mmSetParamValue("::OSPRayRenderer_1::numThreads",[=[0]=])
+mmSetParamValue("::OSPRayRenderer_1::useDBcomponent",[=[false]=])
+mmSetParamValue("::OSPRayRenderer_1::device",[=[cpu]=])
+mmSetParamValue("::OSPRayRenderer_1::enable picking",[=[false]=])
+mmSetParamValue("::OSPRayOBJMaterial_2::DiffuseColor",[=[0.800000012;0.800000012;0.800000012]=])
+mmSetParamValue("::OSPRayOBJMaterial_2::SpecularColor",[=[0;0;0]=])
+mmSetParamValue("::OSPRayOBJMaterial_2::Shininess",[=[10.000000]=])
+mmSetParamValue("::OSPRayOBJMaterial_2::Opacity",[=[1.000000]=])
+mmSetParamValue("::OSPRayOBJMaterial_2::TransparencyFilterColor",[=[0;0;0]=])
+mmSetParamValue("::OSPRayOBJMaterial_3::DiffuseColor",[=[0.800000012;0.800000012;0.800000012]=])
+mmSetParamValue("::OSPRayOBJMaterial_3::SpecularColor",[=[0;0;0]=])
+mmSetParamValue("::OSPRayOBJMaterial_3::Shininess",[=[10.000000]=])
+mmSetParamValue("::OSPRayOBJMaterial_3::Opacity",[=[1.000000]=])
+mmSetParamValue("::OSPRayOBJMaterial_3::TransparencyFilterColor",[=[0;0;0]=])
+mmSetParamValue("::View3DGL_1::camstore::settings",[=[]=])
+mmSetParamValue("::View3DGL_1::camstore::overrideSettings",[=[false]=])
+mmSetParamValue("::View3DGL_1::camstore::autoSaveSettings",[=[false]=])
+mmSetParamValue("::View3DGL_1::camstore::autoLoadSettings",[=[true]=])
+mmSetParamValue("::View3DGL_1::resetViewOnBBoxChange",[=[false]=])
+mmSetParamValue("::View3DGL_1::anim::play",[=[false]=])
+mmSetParamValue("::View3DGL_1::anim::speed",[=[4.000000]=])
+mmSetParamValue("::View3DGL_1::anim::time",[=[0.000000]=])
+mmSetParamValue("::View3DGL_1::backCol",[=[#000020]=])
+mmSetParamValue("::View3DGL_1::showLookAt",[=[false]=])
+mmSetParamValue("::View3DGL_1::viewKey::MoveStep",[=[0.500000]=])
+mmSetParamValue("::View3DGL_1::viewKey::RunFactor",[=[2.000000]=])
+mmSetParamValue("::View3DGL_1::viewKey::AngleStep",[=[90.000000]=])
+mmSetParamValue("::View3DGL_1::viewKey::FixToWorldUp",[=[true]=])
+mmSetParamValue("::View3DGL_1::viewKey::MouseSensitivity",[=[3.000000]=])
+mmSetParamValue("::View3DGL_1::viewKey::RotPoint",[=[Look-At]=])
+mmSetParamValue("::View3DGL_1::hookOnChange",[=[false]=])
+mmSetParamValue("::View3DGL_1::cam::position",[=[30;120;507.846069]=])
+mmSetParamValue("::View3DGL_1::cam::orientation",[=[0;0;0;1]=])
+mmSetParamValue("::View3DGL_1::cam::projectiontype",[=[Perspective]=])
+mmSetParamValue("::View3DGL_1::cam::convergenceplane",[=[0.000000]=])
+mmSetParamValue("::View3DGL_1::cam::centeroffset",[=[0;0]=])
+mmSetParamValue("::View3DGL_1::cam::halfaperturedegrees",[=[15.000000]=])
+mmSetParamValue("::View3DGL_1::cam::halfdisparity",[=[0.025000]=])
+mmSetParamValue("::View3DGL_1::cam::ovr::up",[=[0;0;0]=])
+mmSetParamValue("::View3DGL_1::cam::ovr::lookat",[=[0;0;0]=])
+mmSetParamValue("::View3DGL_1::view::defaultView",[=[FACE - Front]=])
+mmSetParamValue("::View3DGL_1::view::defaultOrientation",[=[Top]=])
+mmSetParamValue("::View3DGL_1::view::cubeOrientation",[=[0;0;0;1]=])
+mmSetParamValue("::View3DGL_1::view::showViewCube",[=[false]=])
+mmSetParamValue("::BoundingBoxRenderer_1::enableBoundingBox",[=[true]=])
+mmSetParamValue("::BoundingBoxRenderer_1::boundingBoxColor",[=[#ffffff]=])
+mmSetParamValue("::BoundingBoxRenderer_1::smoothLines",[=[true]=])
+mmSetParamValue("::BoundingBoxRenderer_1::enableViewCube",[=[false]=])
+mmSetParamValue("::BoundingBoxRenderer_1::viewCubePosition",[=[top right]=])
+mmSetParamValue("::BoundingBoxRenderer_1::viewCubeSize",[=[100]=])
+
+mmSetGUIVisible(true)
+mmSetGUIScale(1.000000)
+mmSetGUIState([=[{"ConfiguratorState":{"module_list_sidebar_width":250.0,"show_module_list_sidebar":true},"GUIState":{"font_file_name":"","font_size":13,"imgui_settings":"[Window][Configurator     F11]\nPos=-43,96\nSize=1920,795\nCollapsed=0\n\n[Window][Parameters     F10]\nPos=0,18\nSize=479,795\nCollapsed=0\nDockId=0x00000003,0\n\n[Window][Log Console     F9]\nPos=0,815\nSize=1920,265\nCollapsed=0\nDockId=0x00000002,0\n\n[Window][Transfer Function Editor     F8]\nCollapsed=0\nDockId=0x00000003\n\n[Window][DockSpaceViewport_11111111]\nPos=0,18\nSize=1920,1062\nCollapsed=0\n\n[Window][Debug##Default]\nPos=60,60\nSize=400,400\nCollapsed=0\n\n[Window][Load Project (.lua)]\nPos=760,290\nSize=400,500\nCollapsed=0\n\n[Window][Log Console -  [File Parameter]]\nPos=755,504\nSize=391,72\nCollapsed=0\n\n[Window][Save Project (.lua)]\nPos=765,290\nSize=400,500\nCollapsed=0\n\n[Docking][Data]\nDockSpace     ID=0x8B93E3BD Window=0xA787BDB4 Pos=0,18 Size=1920,1062 Split=Y\n  DockNode    ID=0x00000001 Parent=0x8B93E3BD SizeRef=1920,808 Split=X\n    DockNode  ID=0x00000003 Parent=0x00000001 SizeRef=479,808 Selected=0x75D4D3D8\n    DockNode  ID=0x00000004 Parent=0x00000001 SizeRef=1439,808 CentralNode=1 Selected=0xAE7400BF\n  DockNode    ID=0x00000002 Parent=0x8B93E3BD SizeRef=1920,270 Selected=0xE0B4A65C\n\n","menu_visible":true,"style":2},"GraphStates":{"Project":{"Modules":{"::AmbientLight_1":{"graph_position":[690.0,188.0]},"::BoundingBoxRenderer_1":{"graph_position":[70.25262451171875,162.08816528320313]},"::OSPRayOBJMaterial_1":{"graph_position":[639.4544067382813,288.0594177246094]},"::OSPRayOBJMaterial_2":{"graph_position":[815.6869506835938,336.22467041015625]},"::OSPRayOBJMaterial_3":{"graph_position":[950.151611328125,449.4138488769531]},"::OSPRayRenderer_1":{"graph_position":[421.0,210.0]},"::OSPRaySphereGeometry_1":{"graph_position":[37.794654846191406,390.4110412597656]},"::OSPRaySphereGeometry_2":{"graph_position":[357.6968688964844,436.16790771484375]},"::OSPRaySphereGeometry_3":{"graph_position":[618.5958251953125,436.16839599609375]},"::OSPRayToGL_1":{"graph_position":[255.0,144.0]},"::TransferFunction_1":{"graph_position":[1115.34814453125,548.453857421875]},"::View3DGL_1":{"graph_position":[56.0,20.0]},"::adiosDataSource_1":{"graph_position":[1111.994140625,409.759033203125]},"::ls1ParticleFormat_1":{"graph_position":[953.6315307617188,584.8682250976563]}},"canvas_scrolling":[555.0427856445313,2.96891450881958],"canvas_zooming":0.8304702043533325,"param_extended_mode":false,"parameter_sidebar_width":300.0,"params_readonly":false,"params_visible":true,"project_name":"Project_3","show_call_label":true,"show_call_slots_label":false,"show_grid":true,"show_module_label":true,"show_parameter_sidebar":true,"show_slot_label":false}},"ParameterStates":{"::AmbientLight_1::Color":{"gui_presentation_mode":8,"gui_read-only":false,"gui_visibility":true},"::AmbientLight_1::Intensity":{"gui_presentation_mode":2,"gui_read-only":false,"gui_visibility":true},"::BoundingBoxRenderer_1::boundingBoxColor":{"gui_presentation_mode":8,"gui_read-only":false,"gui_visibility":true},"::BoundingBoxRenderer_1::enableBoundingBox":{"gui_presentation_mode":2,"gui_read-only":false,"gui_visibility":true},"::BoundingBoxRenderer_1::enableViewCube":{"gui_presentation_mode":2,"gui_read-only":false,"gui_visibility":true},"::BoundingBoxRenderer_1::smoothLines":{"gui_presentation_mode":2,"gui_read-only":false,"gui_visibility":true},"::BoundingBoxRenderer_1::viewCubePosition":{"gui_presentation_mode":2,"gui_read-only":false,"gui_visibility":true},"::BoundingBoxRenderer_1::viewCubeSize":{"gui_presentation_mode":2,"gui_read-only":false,"gui_visibility":true},"::OSPRayOBJMaterial_1::DiffuseColor":{"gui_presentation_mode":2,"gui_read-only":false,"gui_visibility":true},"::OSPRayOBJMaterial_1::Opacity":{"gui_presentation_mode":2,"gui_read-only":false,"gui_visibility":true},"::OSPRayOBJMaterial_1::Shininess":{"gui_presentation_mode":2,"gui_read-only":false,"gui_visibility":true},"::OSPRayOBJMaterial_1::SpecularColor":{"gui_presentation_mode":2,"gui_read-only":false,"gui_visibility":true},"::OSPRayOBJMaterial_1::TransparencyFilterColor":{"gui_presentation_mode":2,"gui_read-only":false,"gui_visibility":true},"::OSPRayOBJMaterial_2::DiffuseColor":{"gui_presentation_mode":2,"gui_read-only":false,"gui_visibility":true},"::OSPRayOBJMaterial_2::Opacity":{"gui_presentation_mode":2,"gui_read-only":false,"gui_visibility":true},"::OSPRayOBJMaterial_2::Shininess":{"gui_presentation_mode":2,"gui_read-only":false,"gui_visibility":true},"::OSPRayOBJMaterial_2::SpecularColor":{"gui_presentation_mode":2,"gui_read-only":false,"gui_visibility":true},"::OSPRayOBJMaterial_2::TransparencyFilterColor":{"gui_presentation_mode":2,"gui_read-only":false,"gui_visibility":true},"::OSPRayOBJMaterial_3::DiffuseColor":{"gui_presentation_mode":2,"gui_read-only":false,"gui_visibility":true},"::OSPRayOBJMaterial_3::Opacity":{"gui_presentation_mode":2,"gui_read-only":false,"gui_visibility":true},"::OSPRayOBJMaterial_3::Shininess":{"gui_presentation_mode":2,"gui_read-only":false,"gui_visibility":true},"::OSPRayOBJMaterial_3::SpecularColor":{"gui_presentation_mode":2,"gui_read-only":false,"gui_visibility":true},"::OSPRayOBJMaterial_3::TransparencyFilterColor":{"gui_presentation_mode":2,"gui_read-only":false,"gui_visibility":true},"::OSPRayRenderer_1::PathTracer::BackgroundTexture":{"gui_presentation_mode":16,"gui_read-only":false,"gui_visibility":true},"::OSPRayRenderer_1::SamplesPerPixel":{"gui_presentation_mode":2,"gui_read-only":false,"gui_visibility":true},"::OSPRayRenderer_1::SciVis::AOdistance":{"gui_presentation_mode":2,"gui_read-only":false,"gui_visibility":true},"::OSPRayRenderer_1::SciVis::AOsamples":{"gui_presentation_mode":2,"gui_read-only":false,"gui_visibility":true},"::OSPRayRenderer_1::SciVis::Shadows":{"gui_presentation_mode":2,"gui_read-only":false,"gui_visibility":true},"::OSPRayRenderer_1::Type":{"gui_presentation_mode":2,"gui_read-only":false,"gui_visibility":true},"::OSPRayRenderer_1::accumulate":{"gui_presentation_mode":2,"gui_read-only":false,"gui_visibility":true},"::OSPRayRenderer_1::device":{"gui_presentation_mode":2,"gui_read-only":false,"gui_visibility":true},"::OSPRayRenderer_1::enable picking":{"gui_presentation_mode":2,"gui_read-only":false,"gui_visibility":true},"::OSPRayRenderer_1::maxRecursion":{"gui_presentation_mode":2,"gui_read-only":false,"gui_visibility":true},"::OSPRayRenderer_1::numThreads":{"gui_presentation_mode":2,"gui_read-only":false,"gui_visibility":true},"::OSPRayRenderer_1::useDBcomponent":{"gui_presentation_mode":2,"gui_read-only":false,"gui_visibility":true},"::OSPRaySphereGeometry_1::ParticleList":{"gui_presentation_mode":2,"gui_read-only":false,"gui_visibility":true},"::OSPRaySphereGeometry_2::ParticleList":{"gui_presentation_mode":2,"gui_read-only":false,"gui_visibility":true},"::OSPRaySphereGeometry_3::ParticleList":{"gui_presentation_mode":2,"gui_read-only":false,"gui_visibility":true},"::TransferFunction_1::TransferFunction":{"gui_presentation_mode":32,"gui_read-only":false,"gui_visibility":true},"::View3DGL_1::ParameterGroup::anim":{"gui_presentation_mode":2,"gui_read-only":false,"gui_visibility":true},"::View3DGL_1::ParameterGroup::view":{"gui_presentation_mode":2,"gui_read-only":false,"gui_visibility":true},"::View3DGL_1::anim::SpeedDown":{"gui_presentation_mode":2,"gui_read-only":false,"gui_visibility":true},"::View3DGL_1::anim::SpeedUp":{"gui_presentation_mode":2,"gui_read-only":false,"gui_visibility":true},"::View3DGL_1::anim::play":{"gui_presentation_mode":2,"gui_read-only":false,"gui_visibility":true},"::View3DGL_1::anim::speed":{"gui_presentation_mode":2,"gui_read-only":false,"gui_visibility":true},"::View3DGL_1::anim::time":{"gui_presentation_mode":2,"gui_read-only":false,"gui_visibility":true},"::View3DGL_1::anim::togglePlay":{"gui_presentation_mode":2,"gui_read-only":false,"gui_visibility":true},"::View3DGL_1::backCol":{"gui_presentation_mode":8,"gui_read-only":false,"gui_visibility":true},"::View3DGL_1::cam::centeroffset":{"gui_presentation_mode":2,"gui_read-only":false,"gui_visibility":true},"::View3DGL_1::cam::convergenceplane":{"gui_presentation_mode":2,"gui_read-only":false,"gui_visibility":true},"::View3DGL_1::cam::halfaperturedegrees":{"gui_presentation_mode":2,"gui_read-only":false,"gui_visibility":true},"::View3DGL_1::cam::halfdisparity":{"gui_presentation_mode":2,"gui_read-only":false,"gui_visibility":true},"::View3DGL_1::cam::orientation":{"gui_presentation_mode":2,"gui_read-only":false,"gui_visibility":true},"::View3DGL_1::cam::ovr::lookat":{"gui_presentation_mode":2,"gui_read-only":false,"gui_visibility":true},"::View3DGL_1::cam::ovr::override":{"gui_presentation_mode":2,"gui_read-only":false,"gui_visibility":true},"::View3DGL_1::cam::ovr::up":{"gui_presentation_mode":2,"gui_read-only":false,"gui_visibility":true},"::View3DGL_1::cam::position":{"gui_presentation_mode":2,"gui_read-only":false,"gui_visibility":true},"::View3DGL_1::cam::projectiontype":{"gui_presentation_mode":2,"gui_read-only":false,"gui_visibility":true},"::View3DGL_1::camstore::autoLoadSettings":{"gui_presentation_mode":2,"gui_read-only":false,"gui_visibility":true},"::View3DGL_1::camstore::autoSaveSettings":{"gui_presentation_mode":2,"gui_read-only":false,"gui_visibility":true},"::View3DGL_1::camstore::overrideSettings":{"gui_presentation_mode":2,"gui_read-only":false,"gui_visibility":true},"::View3DGL_1::camstore::restorecam":{"gui_presentation_mode":2,"gui_read-only":false,"gui_visibility":true},"::View3DGL_1::camstore::settings":{"gui_presentation_mode":2,"gui_read-only":false,"gui_visibility":true},"::View3DGL_1::camstore::storecam":{"gui_presentation_mode":2,"gui_read-only":false,"gui_visibility":true},"::View3DGL_1::enableMouseSelection":{"gui_presentation_mode":2,"gui_read-only":false,"gui_visibility":true},"::View3DGL_1::hookOnChange":{"gui_presentation_mode":2,"gui_read-only":false,"gui_visibility":true},"::View3DGL_1::resetViewOnBBoxChange":{"gui_presentation_mode":2,"gui_read-only":false,"gui_visibility":true},"::View3DGL_1::showLookAt":{"gui_presentation_mode":2,"gui_read-only":false,"gui_visibility":true},"::View3DGL_1::view::cubeOrientation":{"gui_presentation_mode":2,"gui_read-only":true,"gui_visibility":false},"::View3DGL_1::view::defaultOrientation":{"gui_presentation_mode":2,"gui_read-only":false,"gui_visibility":true},"::View3DGL_1::view::defaultView":{"gui_presentation_mode":2,"gui_read-only":false,"gui_visibility":true},"::View3DGL_1::view::resetView":{"gui_presentation_mode":2,"gui_read-only":false,"gui_visibility":true},"::View3DGL_1::view::showViewCube":{"gui_presentation_mode":2,"gui_read-only":false,"gui_visibility":true},"::View3DGL_1::viewKey::AngleStep":{"gui_presentation_mode":2,"gui_read-only":false,"gui_visibility":true},"::View3DGL_1::viewKey::FixToWorldUp":{"gui_presentation_mode":2,"gui_read-only":false,"gui_visibility":true},"::View3DGL_1::viewKey::MouseSensitivity":{"gui_presentation_mode":2,"gui_read-only":false,"gui_visibility":true},"::View3DGL_1::viewKey::MoveStep":{"gui_presentation_mode":2,"gui_read-only":false,"gui_visibility":true},"::View3DGL_1::viewKey::RotPoint":{"gui_presentation_mode":2,"gui_read-only":false,"gui_visibility":true},"::View3DGL_1::viewKey::RunFactor":{"gui_presentation_mode":2,"gui_read-only":false,"gui_visibility":true},"::adiosDataSource_1::filename":{"gui_presentation_mode":16,"gui_read-only":false,"gui_visibility":true},"::ls1ParticleFormat_1::representation":{"gui_presentation_mode":2,"gui_read-only":false,"gui_visibility":true}},"WindowConfigurations":{"Configurator":{"fpsms_max_value_count":20,"fpsms_mode":0,"fpsms_refresh_rate":2.0,"fpsms_show_options":false,"log_force_open":true,"log_level":4294967295,"param_extended_mode":false,"param_modules_list":[],"param_show_hotkeys":false,"tfe_active_param":"","tfe_view_minimized":false,"tfe_view_vertical":false,"win_callback":6,"win_collapsed":false,"win_flags":1032,"win_hotkey":[300,0],"win_position":[-43.0,96.0],"win_reset_position":[0.0,0.0],"win_reset_size":[1920.0,1080.0],"win_show":false,"win_size":[1920.0,795.0]},"Log Console":{"fpsms_max_value_count":20,"fpsms_mode":0,"fpsms_refresh_rate":2.0,"fpsms_show_options":false,"log_force_open":true,"log_level":4294967295,"param_extended_mode":false,"param_modules_list":[],"param_show_hotkeys":false,"tfe_active_param":"","tfe_view_minimized":false,"tfe_view_vertical":false,"win_callback":7,"win_collapsed":false,"win_flags":3072,"win_hotkey":[298,0],"win_position":[0.0,815.0],"win_reset_position":[0.0,904.0],"win_reset_size":[1920.0,176.0],"win_show":true,"win_size":[1920.0,265.0]},"Parameters":{"fpsms_max_value_count":20,"fpsms_mode":0,"fpsms_refresh_rate":2.0,"fpsms_show_options":false,"log_force_open":true,"log_level":4294967295,"param_extended_mode":false,"param_modules_list":[],"param_show_hotkeys":false,"tfe_active_param":"","tfe_view_minimized":false,"tfe_view_vertical":false,"win_callback":1,"win_collapsed":false,"win_flags":8,"win_hotkey":[299,0],"win_position":[0.0,18.0],"win_reset_position":[0.0,0.0],"win_reset_size":[400.0,500.0],"win_show":true,"win_size":[479.0,795.0]},"Performance Metrics":{"fpsms_max_value_count":20,"fpsms_mode":0,"fpsms_refresh_rate":2.0,"fpsms_show_options":false,"log_force_open":true,"log_level":4294967295,"param_extended_mode":false,"param_modules_list":[],"param_show_hotkeys":false,"tfe_active_param":"","tfe_view_minimized":false,"tfe_view_vertical":false,"win_callback":3,"win_collapsed":false,"win_flags":2097217,"win_hotkey":[296,0],"win_position":[960.0,0.0],"win_reset_position":[960.0,0.0],"win_reset_size":[0.0,0.0],"win_show":false,"win_size":[0.0,0.0]},"Transfer Function Editor":{"fpsms_max_value_count":20,"fpsms_mode":0,"fpsms_refresh_rate":2.0,"fpsms_show_options":false,"log_force_open":true,"log_level":4294967295,"param_extended_mode":false,"param_modules_list":[],"param_show_hotkeys":false,"tfe_active_param":"","tfe_view_minimized":false,"tfe_view_vertical":false,"win_callback":5,"win_collapsed":false,"win_flags":64,"win_hotkey":[297,0],"win_position":[400.0,0.0],"win_reset_position":[400.0,0.0],"win_reset_size":[0.0,0.0],"win_show":false,"win_size":[0.0,0.0]}}}]=])
