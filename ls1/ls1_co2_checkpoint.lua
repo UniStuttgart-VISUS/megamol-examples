@@ -61,7 +61,7 @@ mmSetParamValue("::SphereRenderer_1::ambient occlusion::coneLength",[=[0.800000]
 mmSetParamValue("::SphereRenderer_1::ambient occlusion::highPrecisionTexture",[=[false]=])
 mmSetParamValue("::SphereRenderer_1::outline::width",[=[2.000000]=])
 mmSetParamValue("::ls1ParticleFormat_1::representation",[=[Atoms]=])
-mmSetParamValue("::adiosDataSource_1::filename",[=[E:/new_tmp/megamol/build/install/bin/co2_merkers_checkpoint.bp]=])
+mmSetParamValue("::adiosDataSource_1::filename",[=[co2_merkers_checkpoint.bp]=])
 mmSetParamValue("::TransferFunction_1::TransferFunction",[=[{
   "IgnoreProjectRange": true,
   "Interpolation": "GAUSS",
