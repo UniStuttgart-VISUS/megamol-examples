@@ -1,9 +1,9 @@
 -- Adapt the following variables to your needs:
 
-project_file = "../examples/testspheres.lua"
+project_file  = "../examples/testspheres.lua"
 keyframe_file = "../examples/cinematic/testspheres_keyframes.kf"
 
---- Do not change anything below ----------------------------------------------
+--- DO NOT CHANGE ANYTHING BELOW ----------------------------------------------
 
 mmCreateView("cinematic_editor", "SplitViewGL", "::cinematic::SplitViewGL1")
 mmSetParamValue("::cinematic::SplitViewGL1::split.orientation", [=[1]=])
@@ -55,52 +55,45 @@ mmCreateCall("CallRender3DGL", "::cinematic::CinematicView1::rendering", "::cine
 
 function trafo(str)
 
-  -- Break if SplitViewGL or CinematicView occure anywhere in the project
-  local startpos, endpos, word = str:find("SplitViewGL")
-  if not (startpos == nil) then
-    print( "lua ERROR: Cinematic Editor can not be used with projects containing \"SplitViewGL\"."  )
+  local retstr = str
+
+  -- Delete line comments (keep line break)
+  retstr = retstr:gsub("%-%-.-\n", "\n")
+  -- Delete multiline comments
+  retstr = retstr:gsub("%-%-[[.-]]%-%-", "")
+  -- Delete some empty lines
+  retstr = retstr:gsub("\n%s*\n", "\n")
+
+  -- Find first View3DGL
+  startpos, endpos = retstr:find("mmCreateView%(.-,%s*\"View3DGL\"%s*,.-%)")
+  if (startpos == nil) then
+    print( "lua ERROR [Cinematic Editor] Transformation requires at least one mmCreateView() declaration for view class \"View3DGL\" as graph entry."  )
     return ""
   end
-  startpos, endpos, word = str:find("CinematicView")
-  if not (startpos == nil) then
-    print( "lua ERROR: Cinematic Editor can not be used with projects containing \"CinematicView\"."  )
+  -- Extract view module name of found View3DGL
+  local view = retstr:sub(startpos-1, endpos+1)
+  local viewname = view:match('mmCreateView%(.-,%s*\"View3DGL\"%s*,%s*[\"\']([^\"\']+)[\"\']%s*%)')  
+  if (viewname == "") then
+    print( "lua ERROR [Cinematic Editor] Unable to determine required view module name."  )
     return ""
-  end  
-
-  local viewclass, viewmoduleinst
-  startpos, endpos, word = str:find("mmCreateView%(.-,%s*[\"\']([^\"\']+)[\"\']%s*,.-%)")
-  if word == "GUIView" then
-    print( "lua INFO: Found \"GUIView\" as head view." )
-    startpos, endpos, word = str:find("mmCreateModule%(.-View.-%)")
-    local substring = str:sub(startpos, endpos)
-    viewclass, viewmoduleinst = substring:match(
-      'mmCreateModule%(%s*[\"\']([^\"\']+)[\"\']%s*,%s*[\"\']([^\"\']+)[\"\']%s*%)')
-  else
-     viewclass, viewmoduleinst = str:match(
-      'mmCreateView%(.-,%s*[\"\']([^\"\']+)[\"\']%s*,%s*[\"\']([^\"\']+)[\"\']%s*%)')
   end
-  print("lua INFO: View Class = " .. viewclass)
-  print("lua INFO: View Module Instance = " .. viewmoduleinst)
+  -- Delete found occurence of View3DGL
+  retstr = retstr:sub(0, startpos-1) .. retstr:sub(endpos+1)
 
-  local newcontent  = str:gsub("mmCreateView%(.-%)", "")
-  newcontent = newcontent:gsub("mmCreateModule%(.-\"View.-%)", "")
-  newcontent = newcontent:gsub("mmCreateCall%(\"CallRenderViewGL.-%)", "")
-  newcontent = newcontent:gsub('mmCreateCall%([\"\']CallRender3DGL[\'\"],%s*[\'\"]' .. '.-' .. viewmoduleinst .. '::rendering[\'\"],([^,]+)%)', 
+  -- Rewire calls
+  retstr = retstr:gsub('mmCreateCall%([\"\']CallRender3DGL[\'\"],%s*[\'\"]' .. '.-' .. viewname .. '::rendering[\'\"],([^,]+)%)', 
   'mmCreateCall("CallRender3DGL", "::cinematic::ReplacementRenderer1::chainRendering",%1)' .. "\n" .. 
   'mmCreateCall("CallRender3DGL", "::cinematic::ReplacementRenderer2::chainRendering",%1)')
-  
-  -- Assign all parameter values of main view in given project file to cinematic view:
-  local newestcontent = newcontent:gsub('mmSetParamValue%([\"\']' .. viewmoduleinst .. '(.*)%)', 'mmSetParamValue("::cinematic::CinematicView1%1)')
-  while newcontent ~= newestcontent do
-    newcontent = newestcontent
-    newestcontent = newcontent:gsub('mmSetParamValue%([\"\']' .. viewmoduleinst .. '(.*)%)', 'mmSetParamValue("::cinematic::CinematicView1%1)')
-  end
 
-  return newestcontent
+  -- Assign all parameter values of replaced view in transformed project to cinematic view
+  retstr = retstr:gsub('mmSetParamValue%([\"\']' .. viewname .. '(.*)%)', 'mmSetParamValue("::cinematic::CinematicView1%1)')
+
+  print("lua INFO  [Cinematic Editor] Removed View3DGL graph entry \"" .. viewname .. "\" and connected cinematic editor...")  
+  return retstr
 end
 
 local content = mmReadTextFile(project_file, trafo)
-print("lua INFO: Transformed Given Project File =\n" .. content .. "\n\n ")
+print("lua INFO  [Cinematic Editor] Transformed project:\n---------------\n" .. content .. "\n---------------\n")
 code = load(content)
 code()
 
