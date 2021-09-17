@@ -34,11 +34,9 @@ mmSetParamValue("::cinematic::CinematicView1::cinematic::fps", [=[24]=])
 mmSetParamValue("::cinematic::CinematicView1::view::showViewCube",[=[true]=])
 
 mmCreateModule("ReplacementRenderer", "::cinematic::ReplacementRenderer1")
-mmSetParamValue("::cinematic::ReplacementRenderer1::hotkeyAssignment", [=[Alt + 1]=])
 mmSetParamValue("::cinematic::ReplacementRenderer1::replacement", [=[true]=])
 
 mmCreateModule("ReplacementRenderer", "::cinematic::ReplacementRenderer2")
-mmSetParamValue("::cinematic::ReplacementRenderer2::hotkeyAssignment", [=[Alt + 2]=])
 mmSetParamValue("::cinematic::ReplacementRenderer2::replacement", [=[false]=])
 
 mmCreateCall("CallRenderViewGL", "::cinematic::SplitViewGL1::render1", "::cinematic::SplitViewGL2::render")
