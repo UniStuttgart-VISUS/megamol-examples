@@ -1,6 +1,6 @@
 {
   "first_ctrl_point": {
-    "x": -4.005072593688965,
+    "x": 0.0,
     "y": 0.0,
     "z": 0.0
   },
@@ -8,180 +8,164 @@
     {
       "animation_time": 0.0,
       "camera_state": {
-        "centre_offset": [
+        "aspect": 1.2344086170196533,
+        "direction": [
           0.0,
-          0.0
+          0.0,
+          -1.0
         ],
-        "convergence_plane": 0.0,
-        "eye": 0,
-        "far_clipping_plane": 5.832050800323486,
-        "film_gate": [
-          0.0,
-          0.0
-        ],
-        "gate_scaling": 0,
-        "half_aperture_angle_radians": 0.2617993950843811,
-        "half_disparity": 0.02500000037252903,
-        "image_tile": [
-          0,
-          0,
-          862,
-          484
-        ],
-        "near_clipping_plane": 0.0058320509269833565,
-        "orientation": [
-          0.0,
-          0.0,
-          0.0,
+        "far_plane": 5.916317462921143,
+        "fovy": 0.5,
+        "image_plane_tile_end": [
+          1.0,
           1.0
         ],
+        "image_plane_tile_start": [
+          0.0,
+          0.0
+        ],
+        "near_plane": 3.9163174629211426,
         "position": [
           0.0,
           0.0,
-          4.732050895690918
+          4.916317462921143
         ],
         "projection_type": 0,
-        "resolution_gate": [
-          862,
-          484
+        "right": [
+          1.0,
+          -0.0,
+          0.0
+        ],
+        "up": [
+          0.0,
+          1.0,
+          0.0
         ]
       },
       "simulation_time": 0.0
     },
     {
-      "animation_time": 5.0,
+      "animation_time": 3.2040698528289795,
       "camera_state": {
-        "centre_offset": [
+        "aspect": 1.2344086170196533,
+        "direction": [
+          -0.5304677486419678,
+          -0.7208435535430908,
+          -0.4460808336734772
+        ],
+        "far_plane": 5.916317462921143,
+        "fovy": 0.5,
+        "image_plane_tile_end": [
+          1.0,
+          1.0
+        ],
+        "image_plane_tile_start": [
           0.0,
           0.0
         ],
-        "convergence_plane": 0.0,
-        "eye": 0,
-        "far_clipping_plane": 4.365557670593262,
-        "film_gate": [
-          0.0,
-          0.0
-        ],
-        "gate_scaling": 0,
-        "half_aperture_angle_radians": 0.2617993950843811,
-        "half_disparity": 0.02500000037252903,
-        "image_tile": [
-          0,
-          0,
-          862,
-          484
-        ],
-        "near_clipping_plane": 0.0043655578047037125,
-        "orientation": [
-          -0.012037184089422226,
-          0.960873544216156,
-          0.0361672006547451,
-          0.27435213327407837
-        ],
+        "near_plane": 3.9163174629211426,
         "position": [
-          1.4823681116104126,
-          0.21434123814105988,
-          -2.384918689727783
+          2.6079440116882324,
+          3.5439038276672363,
+          2.1930766105651855
         ],
         "projection_type": 0,
-        "resolution_gate": [
-          862,
-          484
+        "right": [
+          1.0,
+          -0.0,
+          0.0
+        ],
+        "up": [
+          -0.6721870303153992,
+          0.6783056259155273,
+          -0.2967592477798462
         ]
       },
-      "simulation_time": 0.5
+      "simulation_time": 0.5085824728012085
     },
     {
-      "animation_time": 7.5,
+      "animation_time": 6.513519287109375,
       "camera_state": {
-        "centre_offset": [
+        "aspect": 1.2344086170196533,
+        "direction": [
+          -0.5445650219917297,
+          0.6693851351737976,
+          0.505343496799469
+        ],
+        "far_plane": 5.916317462921143,
+        "fovy": 0.5,
+        "image_plane_tile_end": [
+          1.0,
+          1.0
+        ],
+        "image_plane_tile_start": [
           0.0,
           0.0
         ],
-        "convergence_plane": 0.0,
-        "eye": 0,
-        "far_clipping_plane": 1.5858772993087769,
-        "film_gate": [
-          0.0,
-          0.0
-        ],
-        "gate_scaling": 0,
-        "half_aperture_angle_radians": 0.2617993950843811,
-        "half_disparity": 0.02500000037252903,
-        "image_tile": [
-          0,
-          0,
-          862,
-          484
-        ],
-        "near_clipping_plane": 0.0015858773840591311,
-        "orientation": [
-          -0.4112631678581238,
-          0.841829776763916,
-          0.15117304027080536,
-          -0.3151698112487793
-        ],
+        "near_plane": 3.9163174629211426,
         "position": [
-          -1.132478952407837,
-          -0.05937079340219498,
-          -1.705324411392212
+          3.3954174518585205,
+          -4.173806667327881,
+          -3.150939702987671
         ],
         "projection_type": 0,
-        "resolution_gate": [
-          862,
-          484
+        "right": [
+          1.0,
+          -0.0,
+          0.0
+        ],
+        "up": [
+          0.004514138214290142,
+          0.6048492789268494,
+          -0.7963275909423828
         ]
       },
-      "simulation_time": 0.75
+      "simulation_time": 1.0
     },
     {
       "animation_time": 10.0,
       "camera_state": {
-        "centre_offset": [
+        "aspect": 1.2344086170196533,
+        "direction": [
+          0.9976843595504761,
+          -0.06557042896747589,
+          0.01806904375553131
+        ],
+        "far_plane": 5.916317462921143,
+        "fovy": 0.5,
+        "image_plane_tile_end": [
+          1.0,
+          1.0
+        ],
+        "image_plane_tile_start": [
           0.0,
           0.0
         ],
-        "convergence_plane": 0.0,
-        "eye": 0,
-        "far_clipping_plane": 4.091377258300781,
-        "film_gate": [
-          0.0,
-          0.0
-        ],
-        "gate_scaling": 0,
-        "half_aperture_angle_radians": 0.2617993950843811,
-        "half_disparity": 0.02500000037252903,
-        "image_tile": [
-          0,
-          0,
-          862,
-          484
-        ],
-        "near_clipping_plane": 0.00409137737005949,
-        "orientation": [
-          0.23686061799526215,
-          -0.258513480424881,
-          0.007780564017593861,
-          0.9364866614341736
-        ],
+        "near_plane": 3.9163174629211426,
         "position": [
-          -1.109520673751831,
-          -1.033674955368042,
-          1.7413606643676758
+          -3.3123245239257813,
+          0.21765536069869995,
+          -0.05998199060559273
         ],
         "projection_type": 0,
-        "resolution_gate": [
-          862,
-          484
+        "right": [
+          1.0,
+          -0.0,
+          0.0
+        ],
+        "up": [
+          0.06537475436925888,
+          0.9977977275848389,
+          0.011221908032894135
         ]
       },
-      "simulation_time": 0.0
+      "simulation_time": 0.5022252202033997
     }
   ],
   "last_ctrl_point": {
-    "x": -0.6796870231628418,
-    "y": -1.2817859649658203,
-    "z": 2.561682939529419
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
   },
   "spline_tangent_length": 0.5,
   "total_animation_time": 10.0
