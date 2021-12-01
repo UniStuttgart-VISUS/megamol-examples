@@ -21,7 +21,7 @@ mmCreateCall("CallOSPRayStructure","::OSPRayRenderer_1::getStructure","::OSPRayS
 mmCreateCall("CallRender3D","::OSPRayToGL_1::getContext","::OSPRayRenderer_1::rendering")
 mmCreateCall("CallRender3DGL","::BoundingBoxRenderer_1::chainRendering","::OSPRayToGL_1::rendering")
 
-mmSetParamValue("::adiosDataSource_1::filename",[=[../sampledata/co2_merkers_checkpoint.bp]=])
+mmSetParamValue("::adiosDataSource_1::filename",[=[../examples/sampledata/co2_merkers_checkpoint.bp]=])
 mmSetParamValue("::View3DGL_1::cam::position",[=[30;120;507.846069]=])
 mmSetParamValue("::View3DGL_1::cam::orientation",[=[0;0;0;1]=])
 mmSetParamValue("::View3DGL_1::cam::halfaperturedegrees",[=[15.000000]=])
