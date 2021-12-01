@@ -7,8 +7,7 @@ role = mmGetConfigValue("role")
 print("I am a " .. role)
 if role == "head" then
 
-    mmCreateView("testview", "GUIView", "gui")
-    mmCreateModule("View3DGL", "::testview::v")
+    mmCreateView("testview", "View3DGL", "::testview::v")
     mmCreateJob("simpleclusterserver", "SimpleClusterServer", "::scs")
     mmSetParamValue("::scs::viewname", "::testview::v")
     mmSetParamValue("::scs::server::Name", headNode)
@@ -17,7 +16,6 @@ if role == "head" then
 
     mmCreateModule("FBOCompositor2", "::testview::fboc")
 
-    mmCreateCall("CallRenderViewGL", "::testview::gui::renderview", "::testview::v::render")
     mmCreateCall("CallRender3DGL", "::testview::v::rendering", "::testview::fboc::rendering")
 else
 
