@@ -98,5 +98,6 @@ mmSetParamValue("::Lighting&Post::AntiAliasing_1::DisableDiagDetection",[=[false
 mmSetParamValue("::Lighting&Post::AntiAliasing_1::DisableCornerDetection",[=[false]=])
 mmSetParamValue("::Lighting&Post::AntiAliasing_1::CornerRounding",[=[25]=])
 mmSetParamValue("::Lighting&Post::AntiAliasing_1::EdgeDetection",[=[Luma]=])
+mmSetParamValue("::Lighting&Post::AntiAliasing_1::Reprojection",[=[true]=])
 mmSetParamValue("::Lighting&Post::AntiAliasing_1::Output",[=[Result]=])
 
