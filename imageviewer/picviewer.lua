@@ -1,7 +1,7 @@
 mmCreateView("pciviewer", "View3DGL", "::picviewer::view")
 mmSetParamValue("::picviewer::view::resetViewOnBBoxChange",[=[true]=])
 mmCreateModule("ImageRenderer", "::picviewer::ren")
-mmSetParamValue("::picviewer::ren::pasteFiles", "..\\examples\\imageviewer\\Epic_Win_title_card.png")
+mmSetParamValue("::picviewer::ren::pasteFiles", "../examples/imageviewer/Epic_Win_title_card.png")
 mmCreateModule("BoundingBoxRenderer", "::picviewer::bboxRenderer")
 mmCreateModule("ScreenShooter", "::picviewer::ScreenShooter1")
 mmSetParamValue("::picviewer::ScreenShooter1::view", "::picviewer::view")
