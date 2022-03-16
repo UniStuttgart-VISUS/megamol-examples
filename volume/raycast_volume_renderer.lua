@@ -29,7 +29,7 @@ mmSetParamValue("::RaycastVolumeExample::ScreenShooter1::tileWidth", [=[1920]=])
 mmSetParamValue("::RaycastVolumeExample::ScreenShooter1::tileHeight", [=[1080]=])
 mmSetParamValue("::RaycastVolumeExample::ScreenShooter1::filename", [=[RaycastVolumeRenderer.png]=])
 
-mmCreateCall("CallGetTransferFunctionGL", "::RaycastVolumeExample::RaycastVolumeRenderer1::getTranfserFunction", "::RaycastVolumeExample::TransferFunction1::gettransferfunction")
+mmCreateCall("CallGetTransferFunctionGL", "::RaycastVolumeExample::RaycastVolumeRenderer1::getTransferFunction", "::RaycastVolumeExample::TransferFunction1::gettransferfunction")
 mmCreateCall("VolumetricDataCall", "::RaycastVolumeExample::RaycastVolumeRenderer1::getData", "::RaycastVolumeExample::VolumetricDataSource1::GetData")
 mmCreateCall("CallRender3DGL", "::RaycastVolumeExample::View3DGL1::rendering", "::RaycastVolumeExample::BoundingBoxRenderer1::rendering")
 mmCreateCall("CallRender3DGL", "::RaycastVolumeExample::BoundingBoxRenderer1::chainRendering", "::RaycastVolumeExample::RaycastVolumeRenderer1::rendering")
