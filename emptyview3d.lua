@@ -1,1 +1,0 @@
-mmCreateView("emptyview3d", "View3DGL", "view")
