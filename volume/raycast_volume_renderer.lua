@@ -15,7 +15,7 @@ mmSetParamValue("::RaycastVolumeExample::TransferFunction1::TransferFunction", [
 [0.6666666269302368,0.6666666269302368,0.6666666269302368,0.40666669607162476,0.5452054738998413,0.05000000074505806],
 [1.0,1.0,1.0,1.0,1.0,0.05000000074505806]],
 "TextureSize":256,
-"ValueRange":[0.0,0.004999999888241291]
+"ValueRange":[0.0,1.0]
 }]=])
 
 mmCreateModule("VolumetricDataSource", "::RaycastVolumeExample::VolumetricDataSource1")
