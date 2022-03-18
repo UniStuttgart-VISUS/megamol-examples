@@ -21,6 +21,7 @@ mmCreateCall("CallRender3D","::OSPRayToGL_1::getContext","::OSPRayRenderer_1::re
 mmCreateCall("CallRender3DGL","::BoundingBoxRenderer_1::chainRendering","::OSPRayToGL_1::rendering")
 
 mmSetParamValue("::adiosDataSource_1::filename",[=[../examples/sampledata/co2_merkers_checkpoint.bp]=])
+mmSetParamValue("::ls1ParticleFormat_1::representation",[=[Atoms]=])
 mmSetParamValue("::TransferFunction_1::TransferFunction",[=[{"IgnoreProjectRange": true,
 "Interpolation": "LINEAR",
 "Nodes": [
