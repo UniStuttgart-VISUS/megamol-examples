@@ -84,7 +84,7 @@ function trafo(str)
   'mmCreateCall("CallRender3DGL", "::cinematic::ReplacementRenderer2::chainRendering",%1)')
 
   -- Assign all parameter values of replaced view in transformed project to cinematic view
-  retstr = retstr:gsub('mmSetParamValue%([\"\']' .. viewname .. '(.*)%)', 'mmSetParamValue("::cinematic::CinematicView1%1)')
+  retstr = retstr:gsub('mmSetParamValue%("' .. viewname .. '([^\n]*)%)', 'mmSetParamValue("::cinematic::CinematicView1%1)')
 
   print("lua INFO  [Cinematic Editor] Removed View3DGL graph entry \"" .. viewname .. "\" and connected cinematic editor...")  
   return retstr
