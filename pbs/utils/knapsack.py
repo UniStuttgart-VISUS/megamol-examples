@@ -70,4 +70,3 @@ def knapsack(items, maxweight):
             j -= items[i - 1][1]
     result.reverse()
     return bestvalue(len(items), maxweight), result
-    

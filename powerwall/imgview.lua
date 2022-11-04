@@ -1,4 +1,4 @@
-﻿file = "\\\\vestastore\\Demos\\HR-Bilder\\Mono\\Handgekloeppelt\\Grossgeraeteantrag.png"
+file = "\\\\vestastore\\Demos\\HR-Bilder\\Mono\\Handgekloeppelt\\Grossgeraeteantrag.png"
 headNode = mmGetConfigValue("headNode")
 renderHead = mmGetConfigValue("renderHead")
 machine = mmGetMachineName()

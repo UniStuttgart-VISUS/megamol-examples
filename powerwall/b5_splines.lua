@@ -1,4 +1,4 @@
-﻿mmpldFile = "\\\\vestastore\\Demos\\megamol-data\\sfb716-20140605\\b5\\B5.vid1.mmpld"
+mmpldFile = "\\\\vestastore\\Demos\\megamol-data\\sfb716-20140605\\b5\\B5.vid1.mmpld"
 siffFile = "\\\\vestastore\\Demos\\megamol-data\\sfb716-20140605\\b5\\time2b.siff"
 headNode = mmGetConfigValue("headNode")
 renderHead = mmGetConfigValue("renderHead")

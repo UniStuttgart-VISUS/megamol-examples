@@ -1,4 +1,4 @@
-﻿chkptFile = "\\\\vestastore\\demos\\megamol-data\\huebsch.chkpt"
+chkptFile = "\\\\vestastore\\demos\\megamol-data\\huebsch.chkpt"
 headNode = mmGetConfigValue("headNode")
 renderHead = mmGetConfigValue("renderHead")
 machine = mmGetMachineName()
