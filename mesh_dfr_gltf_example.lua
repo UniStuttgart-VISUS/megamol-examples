@@ -32,9 +32,9 @@ mmCreateCall("CallMesh","::DeferredGltfRenderer_1::meshes","::GlTFFileLoader1::m
 mmCreateCall("CallGlTFData","::DeferredGltfRenderer_1::gltfModels","::GlTFFileLoader1::gltfModels")
 
 mmSetParamValue("::View3DGL1::camstore::settings",[=[]=])
-mmSetParamValue("::View3DGL1::camstore::overrideSettings",[=[false]=])
-mmSetParamValue("::View3DGL1::camstore::autoSaveSettings",[=[false]=])
-mmSetParamValue("::View3DGL1::camstore::autoLoadSettings",[=[true]=])
+mmSetParamValue("::View3DGL1::multicam::overrideSettings",[=[false]=])
+mmSetParamValue("::View3DGL1::multicam::autoSaveSettings",[=[false]=])
+mmSetParamValue("::View3DGL1::multicam::autoLoadSettings",[=[true]=])
 mmSetParamValue("::View3DGL1::resetViewOnBBoxChange",[=[false]=])
 mmSetParamValue("::View3DGL1::showLookAt",[=[false]=])
 mmSetParamValue("::View3DGL1::view::showViewCube",[=[false]=])
