@@ -101,4 +101,4 @@ mmSetParamValue("::ImageSeriesTimestampFilter_2::Denoise iterations",[=[20]=])
 mmSetParamValue("::ImageSeriesTimestampFilter_2::Denoise threshold",[=[100]=])
 
 mmSetParamValue("::View2DGL_1::camstore::settings",[=[{"aspect":1.809613585472107,"direction":[0.0,0.0,-1.0],"far_plane":100.0,"frustrum_height":1045.0,"image_plane_tile_end":[1.0,1.0],"image_plane_tile_start":[0.0,0.0],"near_plane":0.10000000149011612,"position":[664.5,522.5,1.0],"projection_type":1,"right":[0.0,4.6650311560135914e+21,4.590373509435236e-41],"up":[0.0,1.0,0.0]}]=])
-mmSetParamValue("::ImageSeriesLoader_1::Path",[=[../examples/sampledata/porous]=])
+mmSetParamValue("::ImageSeriesLoader_1::Path",[=[../examples/sampledata/porous/displacement]=])
