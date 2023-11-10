@@ -20,7 +20,7 @@ mmCreateCall("CallRenderViewGL","::SplitViewGL_2::render2","::View2DGL_3::render
 mmCreateCall("CallRender2DGL","::View2DGL_1::rendering","::ScatterplotMatrixRenderer2D_1::rendering")
 mmCreateCall("CallRender2DGL","::View2DGL_2::rendering","::ParallelCoordinatesRenderer2D_1::rendering")
 mmCreateCall("CallRender2DGL","::View2DGL_3::rendering","::TableHistogramRenderer2D_1::rendering")
-mmCreateCall("TableDataCall","::ScatterplotMatrixRenderer2D_1::ftIn","::CSVDataSource_1::getData")
+mmCreateCall("TableDataCall","::ScatterplotMatrixRenderer2D_1::ftIn","::TableManipulator_1::dataOut")
 mmCreateCall("CallGetTransferFunctionGL","::ScatterplotMatrixRenderer2D_1::tfIn","::TransferFunction_1::gettransferfunction")
 mmCreateCall("FlagCallRead_GL","::ScatterplotMatrixRenderer2D_1::readFlags","::UniFlagStorageGL_1::readFlags")
 mmCreateCall("FlagCallWrite_GL","::ScatterplotMatrixRenderer2D_1::writeFlags","::UniFlagStorageGL_1::writeFlags")
@@ -29,7 +29,7 @@ mmCreateCall("CallGetTransferFunctionGL","::ParallelCoordinatesRenderer2D_1::get
 mmCreateCall("FlagCallRead_GL","::ParallelCoordinatesRenderer2D_1::readFlagStorage","::UniFlagStorageGL_1::readFlags")
 mmCreateCall("FlagCallWrite_GL","::ParallelCoordinatesRenderer2D_1::writeFlagStorage","::UniFlagStorageGL_1::writeFlags")
 mmCreateCall("CallGetTransferFunctionGL","::TableHistogramRenderer2D_1::getTransferFunction","::TransferFunction_1::gettransferfunction")
-mmCreateCall("TableDataCall","::TableHistogramRenderer2D_1::getData","::CSVDataSource_1::getData")
+mmCreateCall("TableDataCall","::TableHistogramRenderer2D_1::getData","::TableManipulator_1::dataOut")
 mmCreateCall("FlagCallRead_GL","::TableHistogramRenderer2D_1::readFlagStorage","::UniFlagStorageGL_1::readFlags")
 mmCreateCall("FlagCallWrite_GL","::TableHistogramRenderer2D_1::writeFlagStorage","::UniFlagStorageGL_1::writeFlags")
 mmCreateCall("TableDataCall","::TableManipulator_1::dataIn","::CSVDataSource_1::getData")
@@ -43,6 +43,7 @@ mmSetParamValue("::TableManipulator_1::script",[=[-- example script copying ever
 rows, cols = mmGetInputSize()
 print('got data of size ' .. tostring(rows) .. ' x ' .. tostring(cols))
 
+-- we are adding two new columns
 newcols = cols + 2
 
 -- always set number of output columns first!
@@ -63,12 +64,13 @@ for c = 0, cols - 1 do
     maxes[c] = -math.huge
 end
 
+-- new columns as well
 for c = cols, newcols - 1 do
     mins[c] = math.huge
     maxes[c] = -math.huge
 end
-mmSetOutputColumnName(cols, "sepal_area")
-mmSetOutputColumnName(cols + 1, "petal_area")
+mmSetOutputColumnName(cols, "sepal_ratio")
+mmSetOutputColumnName(cols + 1, "petal_ratio")
 
 -- this allocates the complete table at once for best performance
 -- you need to do this row-wise if you want to filter out data 
@@ -76,6 +78,7 @@ mmAddOutputRows(rows)
 
 for r = 0, rows -1 do
     -- alternative to above: mmAddOutputRows(1), is slower because of re-allocations
+    -- copy everything
     for c = 0, cols - 1 do
         v = mmGetCellValue(r, c)
         if v < mins[c] then
@@ -87,18 +90,19 @@ for r = 0, rows -1 do
         mmSetCellValue(r, c, v)
     end
 
+    -- generate derived values for new columns
     for n = 0, newcols-cols-1 do
         v1 = mmGetCellValue(r, 0 + 2 * n)
         v2 = mmGetCellValue(r, 1 + 2 * n)
-        area = v1 * v2
+        ratio = v1 / v2
         the_c = cols + n
-        if area < mins[the_c] then
-            mins[the_c] = area
+        if ratio < mins[the_c] then
+            mins[the_c] = ratio
         end
-        if area > maxes[the_c] then
-            maxes[the_c] = area
+        if ratio > maxes[the_c] then
+            maxes[the_c] = ratio
         end
-        mmSetCellValue(r, cols + n, area)
+        mmSetCellValue(r, cols + n, ratio)
     end
 end
 
