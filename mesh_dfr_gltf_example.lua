@@ -67,7 +67,7 @@ mmSetParamValue("::Lighting&Post::AntiAliasing_1::DisableDiagDetection",[=[false
 mmSetParamValue("::Lighting&Post::AntiAliasing_1::DisableCornerDetection",[=[false]=])
 mmSetParamValue("::Lighting&Post::AntiAliasing_1::CornerRounding",[=[25]=])
 mmSetParamValue("::Lighting&Post::AntiAliasing_1::EdgeDetection",[=[Luma]=])
-mmSetParamValue("::Lighting&Post::AntiAliasing_1::Show",[=[true]=])
+mmSetParamValue("::Lighting&Post::AntiAliasing_1::Show",[=[false]=])
 mmSetParamValue("::Lighting&Post::AntiAliasing_1::Texture",[=[Output]=])
 mmSetParamValue("::Lighting&Post::SSAO_1::SSAO",[=[ASSAO]=])
 mmSetParamValue("::Lighting&Post::SSAO_1::SSAO Radius",[=[0.500000]=])
